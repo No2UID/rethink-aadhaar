@@ -21,7 +21,7 @@
     "@fontsource/archivo-black": "^5.2.8",
     "@fontsource/roboto": "^5.2.6",
     "@fontsource/source-serif-4": "^5.2.9",
-    "astro": "^5.13.0",
+    "astro": "^6.1.6",
     "astro-seo": "^0.8.4",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
