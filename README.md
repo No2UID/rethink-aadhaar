@@ -184,6 +184,6 @@ For a custom domain (e.g. `rethinkaadhaar.in`), no env vars needed — `astro.co
 
 ## License
 
-- **Code:** MIT
-- **Content** (text in `src/content/`): mirrored under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) from the original Rethink Aadhaar site, with attribution preserved on each migrated entry via a `sourceUrl` field linking back to the original publication.
+- **Code:** MIT — see [`LICENSE`](./LICENSE). Copyright © 2025-2026 Anivar Aravind.
+- **Content** (text in `src/content/`): mirrored under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) from the original Rethink Aadhaar site, with attribution preserved on each migrated entry via a `sourceUrl` field linking back to the original publication. See [`LICENSE-CONTENT`](./LICENSE-CONTENT).
 - **Press coverage entries** index third-party reporting and link out to the original publishers; only title, outlet, date and URL are reproduced.
