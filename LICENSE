@@ -22,8 +22,6 @@ THE SOFTWARE.
 
 ---
 
-This license applies to the source code only.
-
-Content under `src/content/` is mirrored from rethinkaadhaar.in under the
-Creative Commons Attribution 4.0 International License (CC BY 4.0). See
-LICENSE-CONTENT for the full text and attribution details.
+This license applies to the source code only. Content under `src/content/`
+is published by Rethink Aadhaar (https://rethinkaadhaar.in) under CC BY 4.0;
+rights in that content remain with Rethink Aadhaar.
