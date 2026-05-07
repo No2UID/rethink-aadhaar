@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 6
 question: "What is India Stack?"
 short: "India Stack is Aadhaar plus the rails built on top of it. We view it as a failed and objectionable model that should not be replicated abroad."
 ---
