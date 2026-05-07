@@ -1,0 +1,31 @@
+name: pr-check
+
+# Pre-merge gate. Runs only on PRs — pushes to main are covered by
+# `deploy.yml`, which runs the same checks post-build on the deploy artefact.
+
+on:
+  pull_request:
+
+# Mirror GitHub's PR-from-fork behaviour (read-only GITHUB_TOKEN) explicitly,
+# so an internal PR from a feature branch cannot escalate either.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      # Pinned to commit SHA — tag in comment is the human-readable version.
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6  # v2.2.0
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - name: Lint + format check
+        run: bun run check
+      - name: Build
+        run: bun run build
+      - name: SEO check
+        run: bun scripts/check-seo.mjs
