@@ -1,5 +1,6 @@
 /* One family — Inter — across UI, display, and long-form prose.
    Loads four weights + italic for the prose body. */
+@import "@fontsource/inter/300.css";
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/400-italic.css";
 @import "@fontsource/inter/500.css";

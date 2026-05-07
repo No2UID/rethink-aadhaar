@@ -32,7 +32,7 @@ const jsonLd = collectionPage({ name: 'Rethink Aadhaar', url: '/', description }
   jsonLd={jsonLd}
   preloadImage="/media/1489594687018-VG8KQQP625TQFSNEP1FV-image-asset.jpeg"
 >
-  <HeroTitle align="center">Rethink<br/>Aadhaar</HeroTitle>
+  <HeroTitle align="center"><span class="font-light">Rethink</span><br/>Aadhaar</HeroTitle>
 
   <!-- Centred intro paragraph at a comfortable measure (~65ch). -->
   <div class="container-prose mt-10 md:mt-14 prose font-body text-pretty text-center mx-auto fade-up" style="max-width: 65ch;">
@@ -95,7 +95,9 @@ const jsonLd = collectionPage({ name: 'Rethink Aadhaar', url: '/', description }
 
   <section class="container-prose mt-20 md:mt-28 text-center fade-up">
     <p class="eyebrow mb-3">Get involved</p>
-    <h2 class="hero-title text-balance">Let's rethink Aadhaar</h2>
+    <h2 class="font-display uppercase tracking-tight leading-[0.95] text-balance text-4xl md:text-6xl">
+      <span class="font-light">Let's rethink</span> <span class="font-extrabold">Aadhaar</span>
+    </h2>
     <SignupForm />
     <div class="mt-8 flex flex-col sm:flex-row sm:justify-center gap-3">
       <DarkCTA href={link('/take-action')}>Take action now!</DarkCTA>
