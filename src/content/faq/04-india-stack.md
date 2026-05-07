@@ -4,7 +4,7 @@ question: "What is India Stack — and why is it being exported as a model?"
 short: "India Stack is Aadhaar plus the rails built on top of it. It is a closed control loop being marketed abroad as 'open public infrastructure'."
 ---
 
-"India Stack" is the brand that the IT industry — through [iSPIRT](https://en.wikipedia.org/wiki/India_Stack), Nandan Nilekani, and a small group of insiders — gave to the bundle of state systems stitched on top of Aadhaar from around 2012 onwards. The pieces include Aadhaar identity and authentication, the UPI and Aadhaar-enabled payments rails (run by NPCI), e-KYC, eSign, DigiLocker, the Account Aggregator framework, FASTag (mandatory by law), the Ayushman Bharat Digital Mission, ONDC, and a growing list of "Digital Public Infrastructure" (DPI) layers in welfare, health, education and commerce.
+"India Stack" is the brand that **iSPIRT** — a self-appointed industry think tank — and the wider IT lobby gave to the bundle of state systems stitched on top of Aadhaar from around 2012 onwards. The pieces include Aadhaar identity and authentication, the UPI and Aadhaar-enabled payment rails, e-KYC, eSign, DigiLocker, the Account Aggregator framework, FASTag (mandatory by law), the Ayushman Bharat Digital Mission, ONDC, and a growing list of "Digital Public Infrastructure" (DPI) layers in welfare, health, education and commerce.
 
 The official framing is that this is *open public infrastructure* that other countries should adopt. That framing does not survive contact with the system. As [India Stack Watch](https://indiastack.in) puts it: **"closed source at home, marketed as 'open' abroad."**
 
