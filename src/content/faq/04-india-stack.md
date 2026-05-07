@@ -1,11 +1,21 @@
 ---
 order: 4
-question: "What is India Stack — and how is it being exported?"
-short: "Aadhaar is the foundational identity layer of India Stack. The whole bundle is now being marketed to other countries as a 'Digital Public Infrastructure' template."
+question: "What is India Stack — and why is it being exported as a model?"
+short: "India Stack is Aadhaar plus the rails built on top of it. It is a closed control loop being marketed abroad as 'open public infrastructure'."
 ---
 
-"India Stack" is the umbrella term for a set of state-built digital systems layered on top of Aadhaar — Aadhaar identity and authentication, the Aadhaar-linked payments rail (UPI, AePS), e-KYC, DigiLocker, the Account Aggregator framework, and a growing list of "Digital Public Infrastructure" (DPI) components for health, education, and welfare.
+"India Stack" is the brand that the IT industry — through [iSPIRT](https://en.wikipedia.org/wiki/India_Stack), Nandan Nilekani, and a small group of insiders — gave to the bundle of state systems stitched on top of Aadhaar from around 2012 onwards. The pieces include Aadhaar identity and authentication, the UPI and Aadhaar-enabled payments rails (run by NPCI), e-KYC, eSign, DigiLocker, the Account Aggregator framework, FASTag (mandatory by law), the Ayushman Bharat Digital Mission, ONDC, and a growing list of "Digital Public Infrastructure" (DPI) layers in welfare, health, education and commerce.
 
-The official framing is that this is open public infrastructure that other countries can adopt. The structural reality is different: most of the executable code is closed, audits are restricted to permissioned insiders, there is no real exit for people who do not want to be part of it, and the same biometric authentication failures that produce starvation deaths in India are being repackaged as a model for export.
+The official framing is that this is *open public infrastructure* that other countries should adopt. That framing does not survive contact with the system. As [India Stack Watch](https://indiastack.in) puts it: **"closed source at home, marketed as 'open' abroad."**
 
-The civil-society project [India Stack Watch](https://indiastack.in) evaluates the entire stack against five tests — *Exit, Code, Audit, Govern, Fork* — and documents how the system is "public infrastructure, private code: closed-source at home, marketed as 'open' abroad." It is one of the clearest reference points for understanding what the Aadhaar critique looks like when extended across the rest of the stack.
+Measured against the basic tests of any genuinely public technology, the stack fails every one:
+
+- **Exit is blocked.** Refusing Aadhaar means losing rations, pensions, school admissions, bank accounts, mobile SIMs and voter rolls. FASTag and Aadhaar-seeded benefits are mandatory by law. There is no penalty-free way to opt out.
+- **Code is closed.** The executable rules of Aadhaar authentication, UPI clearing, AePS and the Account Aggregator framework are not open source. "Open APIs" is openwashing — APIs are not the system, they are a thin contract over a black box.
+- **Audit is permissioned.** No independent party can verify what UIDAI's servers actually do. The audits that exist are by insiders, on terms set by insiders. Researchers who probe vulnerabilities have been threatened with prosecution.
+- **Governance is by grace, not by right.** The people routed through the stack have no rule-making authority. UIDAI legislates by circular and has repeatedly defied Supreme Court orders.
+- **Fork is impossible.** No state government, no community, no competitor can lawfully build a non-Aadhaar alternative for any of the services Aadhaar has been seeded into. There is no exit and no replacement.
+
+The human cost of this design — biometric exclusion at ration shops, [Aadhaar-linked starvation deaths](/testimonials), pensions cut off, children locked out of school admissions — is not an implementation bug. It is a predictable consequence of running mandatory authentication, with no exit and no fork, on a population of 1.4 billion.
+
+What is being exported, then, is not "Digital Public Infrastructure". It is a template for closed control systems wearing the language of openness — and the same exclusion patterns will follow it wherever it is replicated. We oppose its replication for the same reasons we oppose its use here.
