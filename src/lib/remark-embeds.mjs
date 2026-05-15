@@ -30,7 +30,8 @@ const VIMEO = /^https?:\/\/(?:www\.)?vimeo\.com\/(\d+)(?:[/?#].*)?$/;
 // Capture handle + status id so we can build a clean canonical URL.
 const TWEET =
   /^https?:\/\/(?:mobile\.)?(?:www\.)?(?:twitter\.com|x\.com)\/([A-Za-z0-9_]{1,15})\/status\/(\d{5,25})(?:[/?#].*)?$/;
-const FB_POST = /^https?:\/\/(?:www\.|m\.)?facebook\.com\/([^/]+)\/(posts|videos)\/([0-9A-Za-z]+)(?:[/?#].*)?$/;
+const FB_POST =
+  /^https?:\/\/(?:www\.|m\.)?facebook\.com\/([^/]+)\/(posts|videos)\/([0-9A-Za-z]+)(?:[/?#].*)?$/;
 
 function urlOfSoloParagraph(node) {
   if (node.type !== 'paragraph' || node.children.length === 0) return null;
@@ -90,7 +91,7 @@ function tweetEmbed(handle, id) {
   );
 }
 
-function facebookEmbed(handle, kind, id, url) {
+function facebookEmbed(handle, kind, _id, url) {
   // No Facebook SDK injection — just a styled card linking to the post.
   // Keeps the page free of FB tracking pixels. Users who want the rich
   // preview click through.
@@ -107,7 +108,8 @@ function facebookEmbed(handle, kind, id, url) {
 // as `html` nodes in mdast (markdown raw HTML). They never reach the rehype
 // `element` walker, so strip them here. BaseLayout injects exactly one
 // IntersectionObserver-gated copy of widgets.js per page.
-const TWITTER_WIDGETS_TAG = /<script[^>]*\bsrc=(?:"|')(?:https?:)?\/\/platform\.twitter\.com\/widgets\.js[^"']*(?:"|')[^>]*><\/script>/gi;
+const TWITTER_WIDGETS_TAG =
+  /<script[^>]*\bsrc=(?:"|')(?:https?:)?\/\/platform\.twitter\.com\/widgets\.js[^"']*(?:"|')[^>]*><\/script>/gi;
 
 export default function remarkEmbeds() {
   return (tree) => {

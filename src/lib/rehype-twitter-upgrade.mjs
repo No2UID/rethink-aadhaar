@@ -60,7 +60,8 @@ export default function rehypeTwitterUpgrade() {
     //    Markdown raw HTML lands as either `element` script nodes (when
     //    rehype-raw runs) or `raw` text nodes (default Astro pipeline) —
     //    handle both.
-    const RAW_WIDGETS = /<script[^>]*\bsrc=["'](?:https?:)?\/\/platform\.twitter\.com\/widgets\.js[^"']*["'][^>]*><\/script>/gi;
+    const RAW_WIDGETS =
+      /<script[^>]*\bsrc=["'](?:https?:)?\/\/platform\.twitter\.com\/widgets\.js[^"']*["'][^>]*><\/script>/gi;
     function strip(arr) {
       if (!Array.isArray(arr)) return arr;
       return arr
