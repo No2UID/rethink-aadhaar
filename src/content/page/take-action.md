@@ -2,7 +2,6 @@
 title: "Take Action"
 intro: "What can I do? Perhaps the better question is: what can't we do?"
 ---
-
 There are several active ways to push back. Pick one, or several.
 
 ### Resist the Voter ID — Aadhaar linkage
@@ -44,6 +43,4 @@ For help, write to [contact@rethinkaadhaar.in](mailto:contact@rethinkaadhaar.in)
 
 ### Add yourself to the mailing list
 
-Get an email when we publish updates, statements, or actions.
-
-→ [Subscribe via riseup.net](https://lists.riseup.net/www/subscribe/rethink-aadhaar)
+Get an email when we publish updates, statements, or actions. Use the form at the bottom of this page, or write to [rethink-aadhaar-subscribe@lists.riseup.net](mailto:rethink-aadhaar-subscribe@lists.riseup.net?subject=subscribe) — Riseup will send you a confirmation link to click.
