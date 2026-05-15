@@ -18,7 +18,8 @@
 
 import { visit } from 'unist-util-visit';
 
-const YT = /^https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})|youtu\.be\/([A-Za-z0-9_-]{11}))(?:[&?][^\s]*)?$/;
+const YT =
+  /^https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})|youtu\.be\/([A-Za-z0-9_-]{11}))(?:[&?][^\s]*)?$/;
 const VIMEO = /^https?:\/\/(?:www\.)?vimeo\.com\/(\d+)(?:[/?#].*)?$/;
 
 function urlOfSoloParagraph(node) {
@@ -39,9 +40,7 @@ function urlOfSoloParagraph(node) {
   // but only recurse if the filter actually shrank the list, otherwise an
   // all-bold/all-emphasis paragraph (`**...**`) would recurse forever.
   if (node.children.length > 1) {
-    const meaningful = node.children.filter(
-      (c) => !(c.type === 'text' && c.value.trim() === ''),
-    );
+    const meaningful = node.children.filter((c) => !(c.type === 'text' && c.value.trim() === ''));
     if (meaningful.length === 1 && meaningful.length < node.children.length) {
       return urlOfSoloParagraph({ ...node, children: meaningful });
     }

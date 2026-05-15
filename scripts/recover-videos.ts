@@ -75,7 +75,9 @@ function bodyHasEmbed(body: string, v: Found): boolean {
     if (!t.includes(v.id)) continue;
     if (
       v.provider === 'youtube' &&
-      /^https?:\/\/(?:www\.)?(?:youtube(?:-nocookie)?\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)[A-Za-z0-9_-]{11}/.test(t)
+      /^https?:\/\/(?:www\.)?(?:youtube(?:-nocookie)?\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)[A-Za-z0-9_-]{11}/.test(
+        t,
+      )
     )
       return true;
     if (v.provider === 'vimeo' && /^https?:\/\/(?:www\.)?(?:player\.)?vimeo\.com\/(?:video\/)?\d+/.test(t))
@@ -85,9 +87,7 @@ function bodyHasEmbed(body: string, v: Found): boolean {
 }
 
 function canonicalUrl(v: Found): string {
-  return v.provider === 'youtube'
-    ? `https://www.youtube.com/watch?v=${v.id}`
-    : `https://vimeo.com/${v.id}`;
+  return v.provider === 'youtube' ? `https://www.youtube.com/watch?v=${v.id}` : `https://vimeo.com/${v.id}`;
 }
 
 async function processFile(path: string) {
@@ -103,7 +103,9 @@ async function processFile(path: string) {
   // script stripped; retry with `-` appended on a 404.
   async function get(target: string): Promise<Response> {
     return fetch(target, {
-      headers: { 'user-agent': 'rethink-aadhaar-video-recovery/1.0 (+https://github.com/No2UID/rethink-aadhaar)' },
+      headers: {
+        'user-agent': 'rethink-aadhaar-video-recovery/1.0 (+https://github.com/No2UID/rethink-aadhaar)',
+      },
       redirect: 'follow',
     });
   }
@@ -143,9 +145,7 @@ let scanned = 0;
 
 for (const col of COLLECTIONS) {
   const dir = resolve('src/content', col);
-  const files = (
-    await Array.fromAsync(new Glob('*.md').scan({ cwd: dir, absolute: true }))
-  ).sort();
+  const files = (await Array.fromAsync(new Glob('*.md').scan({ cwd: dir, absolute: true }))).sort();
   console.log(`\n== ${col} (${files.length} files) ==`);
   for (const f of files) {
     scanned++;

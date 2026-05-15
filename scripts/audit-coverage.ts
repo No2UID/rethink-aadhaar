@@ -21,7 +21,8 @@ import { resolve } from 'node:path';
 
 const ROOT = resolve(import.meta.dir, '..');
 const UPSTREAM = 'https://rethinkuid.squarespace.com';
-const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
+const UA =
+  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
 const HEADERS = { 'user-agent': UA, referer: `${UPSTREAM}/` };
 
 type Kind = 'update' | 'exclusion';
@@ -167,7 +168,9 @@ async function main() {
     exclusion: new Set(),
   };
   for (const { kind, url } of upstream) upstreamByKind[kind].add(url);
-  console.log(`Upstream: ${upstreamByKind.update.size} updates, ${upstreamByKind.exclusion.size} exclusions.`);
+  console.log(
+    `Upstream: ${upstreamByKind.update.size} updates, ${upstreamByKind.exclusion.size} exclusions.`,
+  );
 
   const lines: string[] = [];
   const print = (s = '') => {

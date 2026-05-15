@@ -162,10 +162,7 @@ function findMatch(w: WxrPost, existing: Existing[]): Existing | null {
     for (const e of existing) {
       if (!e.sourceUrl) continue;
       const eTail = e.sourceUrl.replace(/\/$/, '').split('/').pop() ?? '';
-      if (
-        urlPath(e.sourceUrl) === wxrPath &&
-        (eTail === '' || eTail === '-' || /^\d+$/.test(eTail))
-      ) {
+      if (urlPath(e.sourceUrl) === wxrPath && (eTail === '' || eTail === '-' || /^\d+$/.test(eTail))) {
         return e;
       }
     }
@@ -276,7 +273,9 @@ let skippedNoMatch = 0;
 let imagesArchived = 0;
 
 console.log(`WXR posts (published): ${posts.length}.  Local files: ${existing.length}.`);
-console.log(`Mode: ${WRITE ? 'WRITE' : 'dry-run'}.  Threshold: local < ${THRESHOLD * 100}% of upstream chars.`);
+console.log(
+  `Mode: ${WRITE ? 'WRITE' : 'dry-run'}.  Threshold: local < ${THRESHOLD * 100}% of upstream chars.`,
+);
 if (only) console.log(`Filter: --only ${only}`);
 if (colArg) console.log(`Filter: --col ${colArg}`);
 console.log('');
