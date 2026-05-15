@@ -75,7 +75,7 @@ collections:
       - { name: excerpt,   label: Excerpt,         widget: text,    required: false, hint: 'Short summary used on cards and OG tags.' }
       - { name: hero,      label: Hero image,      widget: image,   required: false, choose_url: false }
       - { name: sourceUrl, label: Original URL,    widget: string,  required: false, pattern: ['^https?://', 'Must be a full http(s) URL'], hint: 'If this re-publishes a post from rethinkaadhaar.in or elsewhere, paste the canonical URL.' }
-      - { name: draft,     label: Draft,           widget: boolean, default: true,    hint: 'Drafts are excluded from the home page, blog index, RSS, sitemap, JSON-LD, and llms.txt — and the entry page itself is not generated. Toggle on to UNPUBLISH a previously-live entry.' }
+      - { name: draft,     label: Draft,           widget: boolean, default: false,   hint: 'Leave OFF to publish. Toggle ON to keep as a draft (excluded from home, blog index, RSS, sitemap, JSON-LD, llms.txt — entry page not generated) or to UNPUBLISH a previously-live entry.' }
       - { name: body,      label: Body,            widget: markdown }
 
   # ---- EXCLUSION STORIES (testimonials) -------------------------------
