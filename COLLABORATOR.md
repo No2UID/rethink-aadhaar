@@ -86,11 +86,12 @@ Facebook** turns into a proper, privacy-respecting embed automatically.
 That is the whole trick — one link, its own line, blank line above and
 below.
 
-**Do not** paste the "Embed" / `<iframe>` / `<script>` code that
-YouTube or Twitter offer in their share box. It looks like it should
-work, but it loads tracking cookies, breaks on phones, and the site
-strips the script part for safety. The plain link is better in every
-way — and less typing.
+If you do paste **YouTube or Vimeo "Embed" code** by mistake, don't
+worry — the site automatically strips the tracking and rebuilds it as
+the same clean, phone-friendly embed. For **Twitter/X and Facebook**,
+and to keep life simple everywhere, just paste the plain link: it is
+better in every way and less typing. Never paste `<script>` code — it
+is removed for safety and won't do anything.
 
 ---
 
