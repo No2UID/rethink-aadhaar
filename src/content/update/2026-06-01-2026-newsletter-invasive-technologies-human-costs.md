@@ -1,5 +1,5 @@
 ---
-title: 2026 Newsletter | Invasive Technologies, Human Costs
+title: "Newsletter: Invasive Technologies, Human Costs"
 date: 2026-06-01
 excerpt: >-
   Newsletter | January - May, 2026
