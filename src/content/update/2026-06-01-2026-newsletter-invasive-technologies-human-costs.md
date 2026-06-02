@@ -83,4 +83,5 @@ Two important legal developments recognising our rights: 
       \
       Until next time!
 
-      In solidarity,Rethink Aadhaar.
+      In solidarity, \
+      Rethink Aadhaar.
