@@ -6,7 +6,7 @@ excerpt: >-
 
 
   Technology in the first half of 2026 has grown more invasive across nearly every domain, and with it, new forms of exclusion have emerged. This newsletter gathers recent developments, ground reporting, and analyses that illuminate what unfolds behind the headlines: biometric surveillance and facial recognition, the reshaping of labour by AI, and the legal battles now catching up to both. As always, please pass these readings along to your networks.
-hero: /media/screenshot-2026-06-02-at-9.55.44 am.png
+hero: /media/identity-crisis.png
 draft: false
 ---
 **Newsletter | January - May, 2026**
@@ -17,7 +17,7 @@ Two important legal developments recognising our rights:
 
 * **Odisha High Court says [APAAR ID is not mandatory for students](https://www.thehindu.com/news/national/odisha/orissa-hc-asks-centre-to-allow-opt-out-option-in-apaar-id-consent-forms/article70392054.ece):** A parent from Odisha challenged the lack of an opt-out clause or the option to refuse consent in the form requesting parents’ consent to create an APAAR ID. The model consent form further states that the information gathered through the APAAR framework will be shared with other entities. The Odisha High Court has directed the State Government to consider amending the form to include an option to opt out or refuse consent. For more, please see our previous explainer on Apaar ID [here.](https://rethinkaadhaar.in/blog/2025-10-28-re-post-apaar-id-raises-concerns-worsening-exclusion/)
 
-  * **Bombay High Court intervenes on Aadhaar updation roadblocks:** The Bombay High Court issued significant **[directions to UIDAI about how to deal with complaints of technical or biometric issues with a person’s Aadhaar](https://indianexpress.com/article/legal-news/bombay-high-court-uidai-aadhaar-biometric-mismatch-guidelines-twin-brothers-10680096/)**, specifically directing that UIDAI must “adopt a fair, humane and citizen-centric approach while dealing with cases involving students, senior citizens, persons with disabilities, economically weaker sections and other genuine residents facing technological or biometric difficulties.” The High Court noted that people cannot be left in “indefinite administrative limbo.”
+* **Bombay High Court intervenes on Aadhaar updation roadblocks:** The Bombay High Court issued significant **[directions to UIDAI about how to deal with complaints of technical or biometric issues with a person’s Aadhaar](https://indianexpress.com/article/legal-news/bombay-high-court-uidai-aadhaar-biometric-mismatch-guidelines-twin-brothers-10680096/)**, specifically directing that UIDAI must “adopt a fair, humane and citizen-centric approach while dealing with cases involving students, senior citizens, persons with disabilities, economically weaker sections and other genuine residents facing technological or biometric difficulties.” The High Court noted that people cannot be left in “indefinite administrative limbo.”
 * The Court was dealing with a common problem: two brothers from Pune who had been enrolled for Aadhaar as minors sought to update their biometrics upon turning 18 in 2022, but instead faced the familiar bureaucratic nightmare that has come to characterise the process. They were forced to make several applications, personally visit the Regional Office in Bombay twice, told that the rules had changed after they duly followed the procedure, and got no responses from UIDAI – leaving them effectively without any remedy over **three years**. Their higher education hung in the balance as colleges refused to confirm their admission without Aadhaar.
 * The High Court held that (i) whenever a person approaches UIDAI with a grievance about their Aadhaar records, UIDAI must give them a written status update of the record and the correct remedy; (ii) “genuine applicants” should not have to visit the offices repeatedly and should get proper updates about their application; (iii) A permissible fresh enrolment must be facilitated and cannot be rejected merely on the ground that an earlier Aadhaar number was suspended or cancelled; (iv) UIDAI must try to process requests for updation, correction, etc. **within four weeks** from the application. These directions should be implemented in the right spirit by all UIDAI officials to make the system “citizen-centric”. The full Bombay High Court judgment dated 6 May, 2026 is available [here](https://www.livelaw.in/pdf_upload/2026/05/08/rohit-bandu-nikalje-vs-the-regional-officer-uidai-672694.pdf).
 
@@ -74,4 +74,5 @@ We are able to compile these updates because readers send us relevant informatio
 \
 Until next time!
 
-In solidarity,Rethink Aadhaar.
+In solidarity,
+Rethink Aadhaar.
