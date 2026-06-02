@@ -6,7 +6,7 @@ excerpt: >-
 
 
   Technology in the first half of 2026 has grown more invasive across nearly every domain, and with it, new forms of exclusion have emerged. This newsletter gathers recent developments, ground reporting, and analyses that illuminate what unfolds behind the headlines: biometric surveillance and facial recognition, the reshaping of labour by AI, and the legal battles now catching up to both. As always, please pass these readings along to your networks.
-hero: /media/screenshot-2026-06-02-at-9.52.36 am.png
+hero: /media/screenshot-2026-06-02-at-9.55.44 am.png
 draft: false
 ---
 **Newsletter | January - May, 2026**
