@@ -28,7 +28,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.2",
+    "astro": "^6.4.4",
     "astro-seo": "^1.1.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.3.0",
