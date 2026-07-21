@@ -386,7 +386,12 @@
   }
   @supports (animation-timeline: scroll()) {
     .site-header {
-      animation: site-header-scrolled linear forwards;
+      /* Longhands, not the `animation` shorthand: lightningcss folds the
+         shorthand and animation-timeline together into `animation: ...
+         scroll()`, which browsers reject, silently dropping the effect. */
+      animation-name: site-header-scrolled;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
       animation-timeline: scroll();
       animation-range: 16px 48px;
     }
