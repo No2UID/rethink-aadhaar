@@ -52,4 +52,49 @@ The webinar brought to light the rapidly increasing surveillance systems (real t
 * In Arwal, Bihar, two brothers with [100% disability have lost their pension and food rations](https://www.bhaskar.com/local/bihar/arwal/news/disabled-brothers39-pensions-and-rations-are-stopped-if-aadhaar-is-not-created-dbp-138797120.html) for not being able to provide an Aadhaar. 
 * **Aadhaar and your vote:** Although the Election Commission’s guidelines say Aadhaar is not mandatory for submitting Form-6 – the form for inclusion in the electoral roll – Karnataka voters without Aadhaar still face [exclusion as the EC’s application for BLOs does not permit any registration](https://www.thehindu.com/news/cities/bangalore/sir-voters-without-aadhaar-unable-to-submit-form-6-risks-exclusion/article71412167.ece) without Aadhaar. 
 * In Telangana, [40.5% of local beneficiaries have faced difficulties](https://timesofindia.indiatimes.com/city/hyderabad/aadhaar-linkage-woes-affect-pds-beneficiaries-finds-uoh-study/articleshow/133597816.cms) in linking their Aadhaar with their ration cards, finds study. 
-* In Tamil Nadu, school students – particularly those from tribal communities and economically disadvantaged families – face serious hurdles in getting Aadhaar, which then affects their access to crucial [student welfare schemes](https://www.dtnext.in/news/tamilnadu/aadhaar-access-elusive-for-government-students), including scholarships and financial assistance.
+* In Tamil Nadu, school students – particularly those from tribal communities and economically disadvantaged families – face serious hurdles in getting Aadhaar, which then affects their access to crucial [student welfare schemes](https://www.dtnext.in/news/tamilnadu/aadhaar-access-elusive-for-government-students), including scholarships and financial assistance.\
+  \
+  **Aadhaar’s reliability continues to be in question**
+
+  * The [Chhattisgarh High Court](https://timesofindia.indiatimes.com/legal/news/aadhaar-card-not-reliable-proof-of-age-in-accident-compensation-cases-chhattisgarh-hc/articleshow/132406026.cms) held that Aadhaar could not be the sole basis for determining a person’s age, in an accident compensation case. 
+  * The Kerala High Court observed that [DigiYatra may not need Aadhaar](https://www.thehindu.com/news/national/kerala/digi-yatra-cannot-insist-on-aadhaar-as-proof-of-identity-says-kerala-hc/article71225528.ece) if other identity proof can be used, and has asked DigiYatra if any other ID can be used.  
+
+  **No transparency into beneficiaries:** After the Bihar Government increased various pension amounts, an RTI application sought information regarding the number of people who updated their date of birth but was denied with UIDAI stating that “[no such information](https://www.mid-day.com/news/india-news/article/bihar-pension-hike-uidai-had-no-separate-data-on-aadhaar-dob-changes-after-nitish-kumars-announcement-23648133)” was available for the questions relating to the number and breakup of date-of-birth changes. \
+  \
+  **Data protection remains elusive with multiple data breaches**
+
+  * **Financial data at risk:** Sensitive data linked to [India’s newly introduced “.bank.in” domain registration system was exposed due to security flaws](http://bank.in/) in the portal managed by the Institute for Development and Research in Banking Technology (IDRBT), raising [concerns](https://www.medianama.com/2026/06/223-security-vulnerabilities-rbi-bank-in-registry-sensitive-data/) over the protection of banking infrastructure. The [investigation](https://bankin-report.cashlessconsumer.in/) shows how information of bank employees is exposed, which can be used to get access to the banking system. 
+
+  * The UMANG portal, which centralised multiple databases across 2,400 services – aggregating a huge amount of personal information – was found to have serious security flaws exposing this data. This includes UAN and EPFO details, “[LPG cylinder booking details with at least one major oil marketing company, and Aadhaar numbers across several services where a user’s ID details are saved](https://www.thehindu.com/sci-tech/technology/umang-portal-flaws-exposed-user-data-across-hundreds-of-services-researchers-find/article71217208.ece).” These vulnerabilities have likely existed for years and researchers observed that they stem from the very design of the portal. 
+
+  **Nuclear facility data breached:** A ransomware group posted nearly 19,000 files related to the [Kudankulam nuclear power plant](https://www.reuters.com/world/india/files-relating-indias-largest-nuclear-power-plant-kudankulam-exposed-data-breach-2026-07-15/), including purported blueprints of parts of its facilities and supplier details, on the dark web. This is India’s largest nuclear power plant and experts say the breach could pose a “serious” risk to its safety.\
+  \
+  **The Census and your data**
+
+  * The population Census slated to begin in September 2026 will be asking [questions that raised concerns about citizenship status and the anti-NRC protests](https://indianexpress.com/article/india/census-2027-centre-questions-caste-aadhaar-list-10832634/): Of the 40 questions, the questions on nationality, father’s particulars, mother’s particulars, mobile number, Aadhaar number, voter ID, passport number, and driving licence were also included in the National Population Register (NPR) schedule notified in 2020 – which had led to apprehensions that the NPR data would be used to prepare a National Register of Citizens (NRC). 
+
+  * For the first time, [the Census will also include a question about caste](https://www.downtoearth.org.in/governance/census-2027-to-include-question-related-to-caste-a-first-in-independent-india?ref=static.internetfreedom.in). 
+
+  * Watch: A video explainer of the [new Census](https://www.thehindu.com/videos/caste-covid-vaccine-bank-accounts-voteraadhaar-the-big-changes-in-census-2027/article71348679.ece) by The Hindu. 
+
+  * Digital rights group Internet Freedom Foundation commented on the changes to the Census questionnaire pointing out that [multiple data points were being linked without any protection](https://internetfreedom.in/iff-sends-representation-to-mha-on-the-census-2027-household-schedule/) against misuse or breach. 
+
+  * Government must rethink Aadhaar (in the Census): P.C. Mohanan, former acting chairperson of the National Statistical Commission (NSC), said [the collection of personal data such as mobile or Aadhaar number was irrelevant](https://www.telegraphindia.com/india/personal-data-safety-concern-over-census-as-experts-question-collection-of-aadhaar-mobile-numbers-prnt/cid/2175143) for the census.
+
+  Lawyer Gautam Bhatia outlines [three thresholds](https://www.hindustantimes.com/opinion/three-thresholds-for-census-data-collection-101787763562050.html) for the Census data collection. \
+  \
+  **Big Tech’s AI development in India comes at the cost of community resources and the environment**
+
+  * Dirty Data: Activists fighting against indiscriminate data centre creation have put together a tracker of [data centres across India](https://www.dirtydata.earth/map?country=India) and their impact. 
+  * Locals are campaigning to stop building hyperscale data centers – which will affect their access to water on a massive scale – in [Visakhapatnam, Andhra Pradesh](https://stopdirtydatacenters.org/). In August, Visakhapatnam police [prevented citizens from peacefully campaigning](https://www.deccanherald.com/india/andhra-pradesh/vizag-police-draws-flak-for-denying-permission-to-procession-against-data-centres-4105878) against the proliferation of these large-scale data centers in and around the city.
+
+
+  **Read:** A [technical expert’s revisiting of Aadhaar](https://www.techpolicy.press/aadhaars-success-story-deserves-a-closer-look/): By Subhashis Banerjee, earlier at IIT-Delhi and now a Professor of Computer Science at Ashoka University. He writes: “...Aadhaar embodies one particular design choice made between 2009 and 2016: a single, permanent, biometric identifier, reused as a common key across banking, telecoms, taxation, and welfare. .. Two distinct kinds of problems follow from that choice. The first, taken up in the next two sections, is that the evidence behind Aadhaar’s core technical and fiscal claims is weaker than its reputation suggests, regardless of how the identifier is designed. The second is that reusing one identifier everywhere creates a linking risk that a narrower, purpose-bound alternative would avoid — a design principle this piece returns to further below.”
+
+For monthly news, see updates on our website for [June,](https://rethinkaadhaar.in/blog/2026-06-01-2026-newsletter-invasive-technologies-human-costs/) [April](https://rethinkaadhaar.in/blog/2026-04-30-news-update-april-2026/) and [March](https://rethinkaadhaar.in/blog/2026-03-31-news-updates-indias-digital-welfare-system-is-producing-life-altering-exclusions/).   
+
+Until next time!
+
+In solidarity,
+
+Rethink Aadhaar.
