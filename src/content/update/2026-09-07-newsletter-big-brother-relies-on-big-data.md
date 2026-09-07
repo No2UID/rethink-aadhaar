@@ -8,4 +8,6 @@ excerpt: As the State deploys a gamut of surveillance technologies to monitor
 hero: /media/1489926525702-GRQYQW0H572T45FEJ5RV-image-asset.png
 draft: false
 ---
-AAA
+**Big Brother Relies On Big Data** 
+
+**Rethink Aadhaar Newsletter | July - August 2026**
