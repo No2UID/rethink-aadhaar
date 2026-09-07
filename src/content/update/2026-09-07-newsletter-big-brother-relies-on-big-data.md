@@ -18,6 +18,8 @@ In August, we at Rethink Aadhaar co-hosted a webinar along with the Internet Fre
 
 The webinar brought to light the rapidly increasing surveillance systems (real time facial recognition, enhanced glasses, CCTV footage etc.) collecting data about people in India; the lack of easy remedies once you’re caught in a surveillance database; the absence of any legal framework governing most of these systems; and how they effectively shut down protest and dissent. You can watch the discussion [here](https://www.youtube.com/watch?v=EDnUrEVaK6o). 
 
+![](/media/screenshot-2026-09-07-at-3.38.42 pm.png)
+
 **Updates**
 
 **Expanding surveillance systems amid recent protests**
