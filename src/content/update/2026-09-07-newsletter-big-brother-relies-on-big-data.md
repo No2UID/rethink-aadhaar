@@ -63,4 +63,54 @@ The webinar brought to light the rapidly increasing surveillance systems (real t
 * **Aadhaar and your vote:** Although the Election Commission’s guidelines say Aadhaar is not mandatory for submitting Form-6 – the form for inclusion in the electoral roll – Karnataka voters without Aadhaar still face [exclusion as the EC’s application for BLOs does not permit any registration](https://www.thehindu.com/news/cities/bangalore/sir-voters-without-aadhaar-unable-to-submit-form-6-risks-exclusion/article71412167.ece) without Aadhaar. 
 * In Telangana, [40.5% of local beneficiaries have faced difficulties](https://timesofindia.indiatimes.com/city/hyderabad/aadhaar-linkage-woes-affect-pds-beneficiaries-finds-uoh-study/articleshow/133597816.cms) in linking their Aadhaar with their ration cards, finds study. 
 * In Tamil Nadu, school students – particularly those from tribal communities and economically disadvantaged families – face serious hurdles in getting Aadhaar, which then affects their access to crucial [student welfare schemes](https://www.dtnext.in/news/tamilnadu/aadhaar-access-elusive-for-government-students), including scholarships and financial assistance.
-*
+*Aadhaar’s reliability continues to be in question
+
+The Chhattisgarh High Court held that Aadhaar could not be the sole basis for determining a person’s age, in an accident compensation case. 
+
+The Kerala High Court observed that DigiYatra may not need Aadhaar if other identity proof can be used, and has asked DigiYatra if any other ID can be used.  
+
+
+
+No transparency into beneficiaries: After the Bihar Government increased various pension amounts, an RTI application sought information regarding the number of people who updated their date of birth but was denied with UIDAI stating that “no such information” was available for the questions relating to the number and breakup of date-of-birth changes. 
+
+
+
+Data protection remains elusive with multiple data breaches
+
+Financial data at risk: Sensitive data linked to India’s newly introduced “.bank.in” domain registration system was exposed due to security flaws in the portal managed by the Institute for Development and Research in Banking Technology (IDRBT), raising concerns over the protection of banking infrastructure. The investigation shows how information of bank employees is exposed, which can be used to get access to the banking system. 
+
+The UMANG portal, which centralised multiple databases across 2,400 services – aggregating a huge amount of personal information – was found to have serious security flaws exposing this data. This includes UAN and EPFO details, “LPG cylinder booking details with at least one major oil marketing company, and Aadhaar numbers across several services where a user’s ID details are saved.” These vulnerabilities have likely existed for years and researchers observed that they stem from the very design of the portal. 
+
+Nuclear facility data breached: A ransomware group posted nearly 19,000 files related to the Kudankulam nuclear power plant, including purported blueprints of parts of its facilities and supplier details, on the dark web. This is India’s largest nuclear power plant and experts say the breach could pose a “serious” risk to its safety. 
+
+
+The Census and your data
+
+The population Census slated to begin in September 2026 will be asking questions that raised concerns about citizenship status and the anti-NRC protests: Of the 40 questions, the questions on nationality, father’s particulars, mother’s particulars, mobile number, Aadhaar number, voter ID, passport number, and driving licence were also included in the National Population Register (NPR) schedule notified in 2020 – which had led to apprehensions that the NPR data would be used to prepare a National Register of Citizens (NRC). 
+
+For the first time, the Census will also include a question about caste. 
+
+Watch: A video explainer of the new Census by The Hindu. 
+
+Digital rights group Internet Freedom Foundation commented on the changes to the Census questionnaire pointing out that multiple data points were being linked without any protection against misuse or breach. 
+
+Government must rethink Aadhaar (in the Census): P.C. Mohanan, former acting chairperson of the National Statistical Commission (NSC), said the collection of personal data such as mobile or Aadhaar number was irrelevant for the census.
+
+Lawyer Gautam Bhatia outlines three thresholds for the Census data collection. 
+
+Big Tech’s AI development in India comes at the cost of community resources and the environment
+
+Dirty Data: Activists fighting against indiscriminate data centre creation have put together a tracker of data centres across India and their impact. 
+
+Locals are campaigning to stop building hyperscale data centers – which will affect their access to water on a massive scale – in Visakhapatnam, Andhra Pradesh. In August, Visakhapatnam police prevented citizens from peacefully campaigning against the proliferation of these large-scale data centers in and around the city.
+
+Read: A technical expert’s revisiting of Aadhaar: By Subhashis Banerjee, earlier at IIT-Delhi and now a Professor of Computer Science at Ashoka University. He writes: “...Aadhaar embodies one particular design choice made between 2009 and 2016: a single, permanent, biometric identifier, reused as a common key across banking, telecoms, taxation, and welfare. .. Two distinct kinds of problems follow from that choice. The first, taken up in the next two sections, is that the evidence behind Aadhaar’s core technical and fiscal claims is weaker than its reputation suggests, regardless of how the identifier is designed. The second is that reusing one identifier everywhere creates a linking risk that a narrower, purpose-bound alternative would avoid — a design principle this piece returns to further below.”
+
+
+For monthly news, see updates on our website for June, April and March.   
+
+Until next time!
+
+In solidarity,
+
+Rethink Aadhaar.
