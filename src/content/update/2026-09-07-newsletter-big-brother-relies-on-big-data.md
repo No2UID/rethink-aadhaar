@@ -20,15 +20,14 @@ The webinar brought to light the rapidly increasing surveillance systems (real t
 
 ![](/media/screenshot-2026-09-07-at-3.38.42 pm.png)
 
-
 **Updates**
 
 **Expanding surveillance systems amid recent protests**
 
 * The Delhi Police used facial recognition technology (FRT) to review faces of protestors at Jantar Mantar in July, and claimed to have found 2,873 persons who had criminal charges pending against them. [However, the Indian Express investigated and found that in fact, at least 25 of these alleged protestors were in jail at the time of the protests.](https://indianexpress.com/article/express-exclusive/delhi-police-facial-recognition-jantar-mantar-protest-accused-in-jail-10862099/) This raises serious concerns about the use of FRT which can be used to surveil without a person’s knowledge or consent. It highlights why FRT technology is unreliable technology, and a danger to liberty. Delhi Police has previously stated that a [mere 80% match](https://indianexpress.com/article/explained/facial-recognition-accuracy-surveillance-india-jantar-mantar-protests-10862361/) is taken to mean positive identification. 
 * A concerning development that came up in our webinar discussion as well is “[Abhigyan](https://www.thehindu.com/news/national/police-get-new-app-to-scan-suspect-fingerprints-on-the-streets/article71122778.ece)”, a new mobile application for use by law and order agencies. 
-* * In June, it was announced that the police and investigating agencies will get access to this application, which allows police and field officers to conduct instant, on-the-spot fingerprint scans and check them against [1.3 crore criminal suspects and convicts in the National Automated Fingerprint Identification System (NAFIS)](https://m.thewire.in/article/rights/amit-shah-launches-new-app-enabling-police-probe-agencies-to-scan-fingerprints-on-streets/amp).  
 
+  * In June, it was announced that the police and investigating agencies will get access to this application, which allows police and field officers to conduct instant, on-the-spot fingerprint scans and check them against [1.3 crore criminal suspects and convicts in the National Automated Fingerprint Identification System (NAFIS)](https://m.thewire.in/article/rights/amit-shah-launches-new-app-enabling-police-probe-agencies-to-scan-fingerprints-on-streets/amp).  
   * The legal basis for collecting and checking fingerprints of random persons – even during routine traffic stops – is unclear. Under the Criminal Procedure Identification Act, 2022, law enforcement is only empowered to collect biometrics like fingerprints from people who have been convicted or arrested, and those ordered to give security for good behaviour or maintaining peace.
 * Delhi Police reportedly [asked protestors at Jantar Mantar to produce their Aadhaar details](https://x.com/abhijeet_dipke/status/2068943604031050091) in order to join the protest, in a completely unlawful and arbitrary request. 
 * Read: Useful legal analysis and updated facts on the surveillance at the Delhi protests by Nitya Singhania in [‘Facial Recognition at Jantar Mantar: The Limits of Dragnet Identification’](https://indconlawphil.wordpress.com/2026/08/29/facial-recognition-at-jantar-mantar-the-limits-of-dragnet-identification-guest-post/). 
@@ -36,21 +35,13 @@ The webinar brought to light the rapidly increasing surveillance systems (real t
 **Aadhaar and digitisation continues to expand** 
 
 * Aadhaar in our private lives: UIDAI is now promoting Aadhaar authentication to “[strengthen trust in the digital matrimony ecosystem](https://x.com/UIDAI/status/2067203052428542038).” Matrimony.com will start using Aadhaar to authenticate users. 
-
 * **Biometrics for education:** A last-minute insistence on Aadhaar at an exam centre for the UP B.Ed. entrance exam led to a rush at a photocopy shop and [several injuries](https://scroll.in/latest/1093230/up-several-bed-aspirants-fall-into-sewage-drain-after-slab-caves-in-near-exam-centre) when a slab gave way and plunged candidates into a drain below. Biometric [verification failure](https://indianexpress.com/article/education/nta-neet-ug-2026-retest-aadhaar-verification-fails-re-exam-day-guidelines-candidates-admit-cards-10747175/) is yet another thing students have to worry about with NEET. 
-
 * **Corrections required:** Haryana introduced a [new online mechanism](https://www.tribuneindia.com/news/haryana/haryana-government-introduces-new-online-system-to-rectify-errors-in-family-id-data/) to correct discrepancies in the Parivar Pehchan Patra (PPP) database. There are long-standing public grievances related to incorrect family records. Several complaints emerged regarding inaccuracies in the database, particularly the inclusion of unrelated or unidentified individuals in family records.
-
 * **Aadhaar after death:** Karnataka Police have introduced a procedure for identifying unidentified bodies using Aadhaar, although it is suggested that investigators can seek Aadhaar-based identification [only after exhausting other methods](https://www.thehindu.com/news/national/karnataka/aadhaar-data-for-unidentified-bodies-only-as-last-resort-karnataka-police/article71328089.ece/amp/). Reportedly, [the police will not be able to conduct bulk searches of the Aadhaar database](https://www.medianama.com/2026/08/223-karnataka-aadhaar-identify-bodies/). Each request must relate to a specific case and be justified by the need to identify that particular person. 
-
 * **Yet another card:** Telangana proposed a new [“Unified Card”](https://www.thehindu.com/news/national/telangana/telangana-cm-moots-unified-card-to-extend-benefits-of-welfare-schemes/article71033365.ece) which would use artificial intelligence to create a “profile” of beneficiaries and link their welfare benefits across health, insurance, fee reimbursement, etc. Activist [SQ Masood says](https://x.com/i/status/2060662291365073274) this proposal, and the 360-degree profiling system is a dangerous step toward a permanent state surveillance infrastructure. Consolidating sensitive data across health, caste & entitlements under one ID creates an unconstitutional panopticon and enables discrimination. 
-
 * The Delhi government also announced plans to create a [centralized database](https://www.hindustantimes.com/india-news/member-details-aadhaar-link-likely-delhi-govt-mulls-creation-of-panel-for-family-id-cards-101787016026294.html) of personal information, governed by the Delhi Parivar Pehchan Act, 2026. The card will also be linked to [Municipal Corporation of Delhi](https://www.hindustantimes.com/topic/north-municipal-corporation-of-delhi) (MCD) database and will allow the government to keep track of new births and deaths in the families who avail the facility. Whether this will become mandatory for availing benefits, and create yet another database vulnerable to breach, is to be seen. 
-
 * The first Aadhaar enrollment centre has been opened in [Manipur](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2291631&reg=48&lang=2). 
-
 * Reports from Meghalaya suggest that Aadhaar is being made [effectively compulsory](https://highlandpost.com/complaint-seeks-state-intervention-against-coercive-aadhaar-demands/) across government departments, public institutions and online portals in Meghalaya. People are being forced, pressured or technically prevented from accessing government services without Aadhaar, despite official statements that it is not mandatory. 
-
 
 **Minors’ data updated by UIDAI with no record of consent:** UIDAI has been advertising the fact that it has completed “mandatory biometric updates’ for 2 crore children through a technical integration with the [Unified District Information System for Education Plus (UDISE+)](https://udiseplus.gov.in/#/en/home) – but questions arise about [consent, whether parents were consulted](https://www.medianama.com/2026/08/223-uidai-biometrics-children-school-education-database-consent/), and how minors’ biometrics are being accessed without any formal procedure being followed.  
 
@@ -63,54 +54,3 @@ The webinar brought to light the rapidly increasing surveillance systems (real t
 * **Aadhaar and your vote:** Although the Election Commission’s guidelines say Aadhaar is not mandatory for submitting Form-6 – the form for inclusion in the electoral roll – Karnataka voters without Aadhaar still face [exclusion as the EC’s application for BLOs does not permit any registration](https://www.thehindu.com/news/cities/bangalore/sir-voters-without-aadhaar-unable-to-submit-form-6-risks-exclusion/article71412167.ece) without Aadhaar. 
 * In Telangana, [40.5% of local beneficiaries have faced difficulties](https://timesofindia.indiatimes.com/city/hyderabad/aadhaar-linkage-woes-affect-pds-beneficiaries-finds-uoh-study/articleshow/133597816.cms) in linking their Aadhaar with their ration cards, finds study. 
 * In Tamil Nadu, school students – particularly those from tribal communities and economically disadvantaged families – face serious hurdles in getting Aadhaar, which then affects their access to crucial [student welfare schemes](https://www.dtnext.in/news/tamilnadu/aadhaar-access-elusive-for-government-students), including scholarships and financial assistance.
-*Aadhaar’s reliability continues to be in question
-
-The Chhattisgarh High Court held that Aadhaar could not be the sole basis for determining a person’s age, in an accident compensation case. 
-
-The Kerala High Court observed that DigiYatra may not need Aadhaar if other identity proof can be used, and has asked DigiYatra if any other ID can be used.  
-
-
-
-No transparency into beneficiaries: After the Bihar Government increased various pension amounts, an RTI application sought information regarding the number of people who updated their date of birth but was denied with UIDAI stating that “no such information” was available for the questions relating to the number and breakup of date-of-birth changes. 
-
-
-
-Data protection remains elusive with multiple data breaches
-
-Financial data at risk: Sensitive data linked to India’s newly introduced “.bank.in” domain registration system was exposed due to security flaws in the portal managed by the Institute for Development and Research in Banking Technology (IDRBT), raising concerns over the protection of banking infrastructure. The investigation shows how information of bank employees is exposed, which can be used to get access to the banking system. 
-
-The UMANG portal, which centralised multiple databases across 2,400 services – aggregating a huge amount of personal information – was found to have serious security flaws exposing this data. This includes UAN and EPFO details, “LPG cylinder booking details with at least one major oil marketing company, and Aadhaar numbers across several services where a user’s ID details are saved.” These vulnerabilities have likely existed for years and researchers observed that they stem from the very design of the portal. 
-
-Nuclear facility data breached: A ransomware group posted nearly 19,000 files related to the Kudankulam nuclear power plant, including purported blueprints of parts of its facilities and supplier details, on the dark web. This is India’s largest nuclear power plant and experts say the breach could pose a “serious” risk to its safety. 
-
-
-The Census and your data
-
-The population Census slated to begin in September 2026 will be asking questions that raised concerns about citizenship status and the anti-NRC protests: Of the 40 questions, the questions on nationality, father’s particulars, mother’s particulars, mobile number, Aadhaar number, voter ID, passport number, and driving licence were also included in the National Population Register (NPR) schedule notified in 2020 – which had led to apprehensions that the NPR data would be used to prepare a National Register of Citizens (NRC). 
-
-For the first time, the Census will also include a question about caste. 
-
-Watch: A video explainer of the new Census by The Hindu. 
-
-Digital rights group Internet Freedom Foundation commented on the changes to the Census questionnaire pointing out that multiple data points were being linked without any protection against misuse or breach. 
-
-Government must rethink Aadhaar (in the Census): P.C. Mohanan, former acting chairperson of the National Statistical Commission (NSC), said the collection of personal data such as mobile or Aadhaar number was irrelevant for the census.
-
-Lawyer Gautam Bhatia outlines three thresholds for the Census data collection. 
-
-Big Tech’s AI development in India comes at the cost of community resources and the environment
-
-Dirty Data: Activists fighting against indiscriminate data centre creation have put together a tracker of data centres across India and their impact. 
-
-Locals are campaigning to stop building hyperscale data centers – which will affect their access to water on a massive scale – in Visakhapatnam, Andhra Pradesh. In August, Visakhapatnam police prevented citizens from peacefully campaigning against the proliferation of these large-scale data centers in and around the city.
-
-Read: A technical expert’s revisiting of Aadhaar: By Subhashis Banerjee, earlier at IIT-Delhi and now a Professor of Computer Science at Ashoka University. He writes: “...Aadhaar embodies one particular design choice made between 2009 and 2016: a single, permanent, biometric identifier, reused as a common key across banking, telecoms, taxation, and welfare. .. Two distinct kinds of problems follow from that choice. The first, taken up in the next two sections, is that the evidence behind Aadhaar’s core technical and fiscal claims is weaker than its reputation suggests, regardless of how the identifier is designed. The second is that reusing one identifier everywhere creates a linking risk that a narrower, purpose-bound alternative would avoid — a design principle this piece returns to further below.”
-
-
-For monthly news, see updates on our website for June, April and March.   
-
-Until next time!
-
-In solidarity,
-
-Rethink Aadhaar.
