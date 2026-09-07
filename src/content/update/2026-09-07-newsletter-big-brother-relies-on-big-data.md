@@ -20,6 +20,8 @@ The webinar brought to light the rapidly increasing surveillance systems (real t
 
 ![](/media/1489927205338-JHMXRT6FZQHM03F776JX-image-asset.png)
 
+![](/media/screenshot-2026-09-07-at-3.38.42 pm.png)
+
 **Updates**
 
 **Expanding surveillance systems amid recent protests**
