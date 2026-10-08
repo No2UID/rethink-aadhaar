@@ -18,6 +18,9 @@ backend:
   # before any access token reaches the browser.
   base_url: https://rethink-cms-auth.no2uid.workers.dev
   auth_scope: public_repo
+  # If an editor clicks "Publish now" and Decap merges the PR itself,
+  # squash like every other merge to main.
+  squash_merges: true
 
 # Every CMS save creates a PR against `main`, never a direct commit.
 # The PR is labelled with the editor's status (decap-cms/draft,

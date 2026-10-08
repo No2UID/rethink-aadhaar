@@ -103,7 +103,9 @@ jobs:
         if: env.READY == 'true'
         run: |
           set -euo pipefail
-          for _ in $(seq 1 60); do
+          # 30 min cap: a check stuck in the runner queue must not leave a
+          # merged PR undeployed.
+          for _ in $(seq 1 180); do
             state=$(gh pr view "$PR" --repo "$REPO" --json state --jq .state)
             case "$state" in
               MERGED)
@@ -118,4 +120,4 @@ jobs:
             esac
             sleep 10
           done
-          echo "::warning::PR #$PR did not merge within 10 minutes. The check is failing or still running; auto-merge stays enabled and will deploy on the next save."
+          echo "::warning::PR #$PR did not merge within 30 minutes. The check is failing or still queued; auto-merge stays enabled. If it merges later, run deploy.yml by hand or re-save in the CMS."

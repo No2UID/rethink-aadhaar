@@ -98,7 +98,7 @@ jobs:
           # Required `check` status: run pr-check on the branch explicitly.
           gh workflow run pr-check.yml --repo "$REPO" --ref "$BRANCH"
           gh pr merge --auto --squash "$pr" --repo "$REPO"
-          for _ in $(seq 1 60); do
+          for _ in $(seq 1 180); do
             state=$(gh pr view "$pr" --repo "$REPO" --json state --jq .state)
             case "$state" in
               MERGED)
@@ -113,5 +113,5 @@ jobs:
             esac
             sleep 10
           done
-          echo "::error::PR #$pr did not merge within 10 minutes; pr-check probably failed. See the PR."
+          echo "::error::PR #$pr did not merge within 30 minutes; pr-check probably failed. See the PR."
           exit 1

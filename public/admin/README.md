@@ -162,11 +162,14 @@ is in the critical path.
    reads the Decap status label. While the label is `decap-cms/draft`
    or `decap-cms/pending_review` it keeps auto-merge **off**: nothing
    publishes, however often the editor saves.
-8. Editor sets status **Ready** and clicks **Publish now**. Decap
-   relabels the PR `decap-cms/pending_publish`. The gate brings the
-   branch up to date with `main` if it fell behind, enables squash
-   auto-merge, and GitHub merges as soon as `check` is green. Branch
-   protection still requires the check to pass.
+8. Editor sets status **Ready**. Decap relabels the PR
+   `decap-cms/pending_publish`. The gate brings the branch up to date
+   with `main` if it fell behind, then merges: directly if `check` is
+   already green, otherwise by arming squash auto-merge. Branch
+   protection still requires the check to pass. Decap's **Publish now**
+   button is optional; it merges with the editor's token (squash, per
+   `squash_merges: true`) and simply errors if the gate got there first
+   or the check is still running.
 9. The gate then dispatches `.github/workflows/deploy.yml` (a merge
    made with `GITHUB_TOKEN` does not trigger `on: push`), which
    rebuilds the static site and deploys to GitHub Pages.

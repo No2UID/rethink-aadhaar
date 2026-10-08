@@ -30,10 +30,13 @@ the result to GitHub Pages on merge.
    Nothing is published yet: `cms-automerge.yml` keeps auto-merge off for
    any CMS PR whose status is Draft or In review, so you can save as often
    as you like.
-6. **Set status Ready → Publish now.** Decap relabels the PR
-   `decap-cms/pending_publish`. `cms-automerge.yml` then brings the branch
-   up to date with `main` if needed, enables squash auto-merge, and the PR
-   merges as soon as the `check` CI status passes (no human click needed).
+6. **Set status Ready.** That is the publish action. Decap relabels the PR
+   `decap-cms/pending_publish`; `cms-automerge.yml` brings the branch up
+   to date with `main` if needed and merges it: directly if `check` is
+   already green, otherwise via squash auto-merge the moment it passes.
+   Decap's own **Publish now** button is optional. It merges with the
+   editor's token and works only when the check is green and the branch
+   current; if it errors, the gate has already merged or will.
 7. The same workflow dispatches `deploy.yml` once the merge lands (a merge
    made with `GITHUB_TOKEN` does not trigger `on: push`), and the entry is
    live in ~2 minutes.
