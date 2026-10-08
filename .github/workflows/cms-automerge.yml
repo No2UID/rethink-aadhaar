@@ -8,13 +8,17 @@ name: CMS publish gate
 #   decap-cms/pending_publish   Ready        (Publish)
 #
 # Only a PR carrying `decap-cms/pending_publish` may merge. Any other status
-# disables auto-merge, so Save never publishes. `cms/delete/*` PRs come from
-# delete-entry.yml, carry no Decap label, and are treated as Ready.
+# disables auto-merge, so Save never publishes.
 #
-# When Ready, the job brings a stale branch up to date, enables squash
-# auto-merge, waits for the merge, then dispatches deploy.yml: merges and
-# pushes made with GITHUB_TOKEN never trigger `on: push`, so without the
-# dispatch a publish would silently never deploy.
+# When Ready, the job brings a stale branch up to date, merges (directly if
+# the PR is already clean, otherwise via squash auto-merge), waits for the
+# merge, then dispatches deploy.yml: merges and pushes made with
+# GITHUB_TOKEN never trigger `on: push`, so without the dispatch a publish
+# would silently never deploy.
+#
+# `cms/delete/*` PRs from delete-entry.yml are opened with GITHUB_TOKEN, so
+# no pull_request workflow (this one included) ever runs on them. That
+# workflow runs the check and merges itself.
 
 on:
   pull_request:
@@ -43,9 +47,7 @@ jobs:
       REPO: ${{ github.repository }}
       PR: ${{ github.event.pull_request.number }}
       BRANCH: ${{ github.head_ref }}
-      READY: >-
-        ${{ contains(github.event.pull_request.labels.*.name, 'decap-cms/pending_publish')
-            || startsWith(github.head_ref, 'cms/delete/') }}
+      READY: ${{ contains(github.event.pull_request.labels.*.name, 'decap-cms/pending_publish') }}
     steps:
       - name: Hold — status is not Ready
         if: env.READY != 'true'
@@ -58,19 +60,44 @@ jobs:
         run: |
           set -euo pipefail
           state=$(gh pr view "$PR" --repo "$REPO" --json mergeStateStatus --jq .mergeStateStatus)
-          echo "mergeStateStatus=$state"
-          if [ "$state" = "BEHIND" ]; then
-            gh pr update-branch "$PR" --repo "$REPO"
-            # The update is a GITHUB_TOKEN push, which does not trigger
-            # pr-check. Run it explicitly so the required `check` status
-            # exists on the new head commit.
-            sleep 5
-            gh workflow run pr-check.yml --repo "$REPO" --ref "$BRANCH"
+          if [ "$state" = "UNKNOWN" ]; then
+            sleep 10
+            state=$(gh pr view "$PR" --repo "$REPO" --json mergeStateStatus --jq .mergeStateStatus)
           fi
+          echo "mergeStateStatus=$state"
+          case "$state" in
+            BEHIND)
+              gh pr update-branch "$PR" --repo "$REPO"
+              # The update is a GITHUB_TOKEN push, which does not trigger
+              # pr-check. Run it explicitly so the required `check` status
+              # exists on the new head commit.
+              sleep 5
+              gh workflow run pr-check.yml --repo "$REPO" --ref "$BRANCH"
+              ;;
+            DIRTY)
+              echo "::error::PR #$PR conflicts with main and cannot be published. An admin must resolve the conflict on branch $BRANCH."
+              exit 1
+              ;;
+          esac
 
-      - name: Enable auto-merge
+      - name: Merge, or arm auto-merge
         if: env.READY == 'true'
-        run: gh pr merge --auto --squash "$PR" --repo "$REPO"
+        run: |
+          set -euo pipefail
+          read -r state armed < <(gh pr view "$PR" --repo "$REPO" \
+            --json mergeStateStatus,autoMergeRequest \
+            --jq '"\(.mergeStateStatus) \(.autoMergeRequest != null)"')
+          echo "mergeStateStatus=$state autoMergeAlreadyEnabled=$armed"
+          if [ "$state" = "CLEAN" ]; then
+            # Check already green and branch current. GitHub refuses to
+            # *enable* auto-merge on a PR it could merge right now, so
+            # merge it directly.
+            gh pr merge --squash "$PR" --repo "$REPO"
+          elif [ "$armed" = "true" ]; then
+            echo "Auto-merge already enabled; nothing to do."
+          else
+            gh pr merge --auto --squash "$PR" --repo "$REPO"
+          fi
 
       - name: Wait for merge, then deploy
         if: env.READY == 'true'

@@ -109,6 +109,11 @@ is removed for safety and won't do anything.
   every required field is filled, Save and Publish again.
 - **Saved but it is not on the site?** That is by design. Saving never
   publishes; set the status to **Ready** and click **Publish now**.
+- **"Publish now" shows an error?** That happens if you click it within
+  a minute or two of saving, before the automated check has finished.
+  Nothing is lost. Either wait a minute and click **Publish now** again,
+  or just leave the status on **Ready**: it publishes on its own as
+  soon as the check passes.
 - **An image must never be public?** Don't upload it. Everything in the
   editor lands in a public repository the moment it publishes.
 - **Stuck on sign-in?** Your GitHub username must be on the

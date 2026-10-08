@@ -172,8 +172,10 @@ is in the critical path.
    rebuilds the static site and deploys to GitHub Pages.
 10. New post is live in ~2 minutes.
 
-`cms/delete/*` PRs opened by `delete-entry.yml` carry no Decap label and
-are treated as Ready.
+`cms/delete/*` PRs opened by `delete-entry.yml` never reach this gate:
+they are created with `GITHUB_TOKEN`, for which GitHub starts no
+`pull_request` workflows at all. `delete-entry.yml` therefore runs
+`pr-check` on its branch, merges, and dispatches the deploy itself.
 
 To **edit an existing entry**: open it in `/admin/`, change fields, save.
 Same PR flow. Slug never changes (URLs stay stable).
@@ -188,7 +190,8 @@ To **permanently delete** a file (rare; for actual mistakes — orphaned
 images, accidental duplicates): run the
 [**Delete entry (PR)**](../../actions/workflows/delete-entry.yml)
 workflow from the Actions tab, paste the repo-relative path, click
-**Run workflow**. It opens a `cms/delete/<slug>` PR which auto-merges.
+**Run workflow**. It opens a `cms/delete/<slug>` PR, runs the check on
+it, merges it and deploys, all within the one workflow run.
 
 > **About the delete controls in the CMS.** `delete: false` on every
 > collection hides delete for a published entry. Decap 3.12.2 still

@@ -37,7 +37,7 @@ publish_mode: editorial_workflow
 #     normal editorial_workflow PR.
 #   - To permanently DELETE the file: trigger
 #     .github/workflows/delete-entry.yml from the Actions tab. It opens
-#     a `cms/delete/<slug>` PR, which the gate treats as Ready.
+#     a `cms/delete/<slug>` PR and merges + deploys it itself.
 # "Delete unpublished changes/entry" in the editor is different: it
 # discards an in-flight draft (closes the cms/* PR) and is safe to use.
 

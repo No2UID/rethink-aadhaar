@@ -4,9 +4,14 @@ name: Delete entry (PR)
 # routes as a direct commit to main and branch protection blocks).
 #
 # Run from the Actions tab. The workflow validates the path, creates a
-# `cms/delete/<sanitised>` branch with the file removed, opens a PR, and
-# the existing cms-automerge workflow squash-merges it after the
-# `pr-check` status passes.
+# `cms/delete/<sanitised>` branch with the file removed, opens a PR, runs
+# pr-check on it, squash-merges it once the check passes, and dispatches
+# deploy.yml.
+#
+# It has to do all of that itself: the branch push and the PR are made
+# with GITHUB_TOKEN, and GitHub never starts `pull_request` or `push`
+# workflows for GITHUB_TOKEN activity. Only `workflow_dispatch` is exempt,
+# which is how pr-check and deploy are started here.
 #
 # Allowed paths: anything inside `src/content/` or `public/media/`. Any
 # other path is rejected — you can't use this workflow to nuke
@@ -27,6 +32,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 jobs:
   open-delete-pr:
@@ -79,5 +85,33 @@ jobs:
           ACTOR: ${{ github.actor }}
         run: |
           set -euo pipefail
-          body=$(printf 'Permanently removes `%s` from the repo.\n\n**Triggered by:** @%s via the [delete-entry workflow](../actions/workflows/delete-entry.yml).\n**Reason:** %s\n\nAuto-merges via `cms-automerge.yml` once `pr-check` is green.' "$P" "$ACTOR" "${REASON:-_(none provided)_}")
+          body=$(printf 'Permanently removes `%s` from the repo.\n\n**Triggered by:** @%s via the [delete-entry workflow](../actions/workflows/delete-entry.yml).\n**Reason:** %s\n\nMerges automatically once `pr-check` is green, then deploys.' "$P" "$ACTOR" "${REASON:-_(none provided)_}")
           gh pr create --base main --head "$BRANCH" --title "Delete: $P" --body "$body"
+
+      - name: Check, merge, deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          pr=$(gh pr view "$BRANCH" --repo "$REPO" --json number --jq .number)
+          # Required `check` status: run pr-check on the branch explicitly.
+          gh workflow run pr-check.yml --repo "$REPO" --ref "$BRANCH"
+          gh pr merge --auto --squash "$pr" --repo "$REPO"
+          for _ in $(seq 1 60); do
+            state=$(gh pr view "$pr" --repo "$REPO" --json state --jq .state)
+            case "$state" in
+              MERGED)
+                echo "PR #$pr merged. Dispatching deploy.yml on main."
+                gh workflow run deploy.yml --repo "$REPO" --ref main
+                exit 0
+                ;;
+              CLOSED)
+                echo "PR #$pr closed without merge; no deploy."
+                exit 0
+                ;;
+            esac
+            sleep 10
+          done
+          echo "::error::PR #$pr did not merge within 10 minutes; pr-check probably failed. See the PR."
+          exit 1
