@@ -45,10 +45,6 @@ typecheck:
 new CATEGORY TITLE *FLAGS:
     bun run new -- {{CATEGORY}} "{{TITLE}}" {{FLAGS}}
 
-# Crawl rethinkaadhaar.in/sitemap.xml and write any new entries as drafts.
-sync:
-    bun run sync
-
 # ---- Deploy / verify ---------------------------------------------------
 
 # Show the latest 5 deploy runs.
@@ -62,7 +58,7 @@ watch-deploy:
 # Quick sanity-check: fetch /, /myths, /about and count aria-current.
 verify-deploy:
     @set -e; \
-    BASE="https://anivar.github.io/rethink-aadhaar"; \
+    BASE="https://rethinkaadhaar.in"; \
     for path in "/" "/myths/" "/about/"; do \
         curl -sL "$BASE$path" -o /tmp/_rethink-verify.html; \
         n=$(rg -c 'aria-current="page"' /tmp/_rethink-verify.html || true); \
@@ -71,7 +67,7 @@ verify-deploy:
 
 # Open the deployed admin in the default browser.
 admin-open:
-    xdg-open https://anivar.github.io/rethink-aadhaar/admin/
+    xdg-open https://rethinkaadhaar.in/admin/
 
 # Usage: just admin-sri 3.12.2
 # Then update both @VERSION in src= and integrity= in public/admin/index.html.

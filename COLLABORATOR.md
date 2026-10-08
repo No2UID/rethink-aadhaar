@@ -11,12 +11,21 @@ Sign in once with **Sign in with GitHub**. You stay signed in.
 ## The one thing to know
 
 In the editor, **Save is not Publish.** Saving stores your work; the
-entry is still hidden from the public site. To make it live you must
-also set the status to **Ready** and click **Publish now**.
+entry is still hidden from the public site, and you can keep saving for
+as long as you like. **Setting the status to Ready is what publishes.**
 
-There is no separate human review step — once you publish, an automated
-check runs and the page goes live on its own in about **2 minutes**.
-Nobody has to approve it. So publish only when it is genuinely ready.
+There is no separate human review step — once you set **Ready**, an
+automated check runs and the page goes live on its own in about
+**2 minutes**. Nobody has to approve it. So move to Ready only when it
+is genuinely ready.
+
+You do not need to click **Publish now**. It also works once the check
+is green, but if it shows an error, ignore it: Ready has already done
+the job.
+
+Changed your mind about a draft? Open it and click **Delete unpublished
+entry** (or **Delete unpublished changes** on an existing entry). That
+discards the draft only; nothing on the public site changes.
 
 ---
 
@@ -27,15 +36,15 @@ Nobody has to approve it. So publish only when it is genuinely ready.
 2. Click **New …**.
 3. Fill the form. Leave the **Draft** toggle **OFF**.
 4. **Save**.
-5. Open the **Workflow** tab, drag the card to **Ready**, click
-   **Publish → Publish now**.
+5. Open the **Workflow** tab and drag the card to **Ready** (or pick
+   **Set status → Ready** at the top of the entry).
 6. Done. Live in ~2 minutes.
 
 ## 2. Fix or update a live entry
 
 1. Open `/admin/`, open the existing entry.
 2. Edit the fields.
-3. **Save**, then **Publish now** (same as step 5 above).
+3. **Save**, then set the status to **Ready** (same as step 5 above).
 
 The web address of the entry does not change, so existing links keep
 working. (Exception: heavily re-wording a long-published **Myth** changes
@@ -45,7 +54,7 @@ its link — see the hint on that field.)
 
 1. Open `/admin/`, open the entry.
 2. Turn the **Draft** toggle **ON**.
-3. **Save**, then **Publish now**.
+3. **Save**, then set the status to **Ready**.
 
 The entry disappears from the public site everywhere but stays in the
 archive, so you can bring it back later by turning Draft **OFF** again.
@@ -53,8 +62,9 @@ This is the normal way to retire content.
 
 ## 4. Permanently delete a file (rare)
 
-The editor's delete button is intentionally disabled. To remove a file
-for good (an orphaned image, an accidental duplicate):
+The editor can only discard *unpublished* work (see above); it cannot
+delete something that is already live. To remove a file for good (an
+orphaned image, an accidental duplicate):
 
 1. Go to the repository's **Actions** tab →
    **Delete entry (PR)** → **Run workflow**.
@@ -100,6 +110,12 @@ is removed for safety and won't do anything.
 - **Published but not live after ~5 min?** The automated check may have
   failed (usually a required field left blank). Re-open the entry, check
   every required field is filled, Save and Publish again.
+- **Saved but it is not on the site?** That is by design. Saving never
+  publishes; set the status to **Ready**.
+- **"Publish now" shows an error?** Ignore it. Either the entry was
+  already published the moment you set Ready, or the automated check
+  has not finished yet and it will publish on its own when it does.
+  Nothing is lost.
 - **An image must never be public?** Don't upload it. Everything in the
   editor lands in a public repository the moment it publishes.
 - **Stuck on sign-in?** Your GitHub username must be on the

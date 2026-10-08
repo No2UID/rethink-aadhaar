@@ -5,6 +5,10 @@ name: pr-check
 
 on:
   pull_request:
+  # Dispatched by cms-automerge.yml after `gh pr update-branch`: that push
+  # is made with GITHUB_TOKEN and would otherwise leave the new head commit
+  # with no `check` status, so the required check could never go green.
+  workflow_dispatch:
 
 # Mirror GitHub's PR-from-fork behaviour (read-only GITHUB_TOKEN) explicitly,
 # so an internal PR from a feature branch cannot escalate either.
@@ -16,7 +20,7 @@ permissions:
 # the latest commit's `check` gates the merge anyway, so the in-flight
 # build is wasted minutes. Scoped per-PR; other PRs are unaffected.
 concurrency:
-  group: pr-check-${{ github.event.pull_request.number }}
+  group: pr-check-${{ github.event.pull_request.number || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -28,7 +32,7 @@ jobs:
       # Checkout must precede the local composite action: the runner only
       # resolves ./.github/actions/* once the repo is on disk. Pinned to
       # commit SHA — tag in comment is the human-readable version.
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
       - uses: ./.github/actions/setup
       - name: Lint + format check
         run: bun run check

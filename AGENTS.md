@@ -6,7 +6,7 @@ Static site for [rethinkaadhaar.in](https://rethinkaadhaar.in) — an accessibil
 
 ## Tech Stack
 
-- **Astro 6** (static output, TypeScript strict)
+- **Astro 7** (static output, TypeScript strict)
 - **Tailwind v4** (CSS-first `@theme` config) + `@tailwindcss/typography`
 - **MDX** content via Astro Content Collections (Zod-typed)
 - **Biome** for linting + formatting
