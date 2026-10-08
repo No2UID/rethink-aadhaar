@@ -1,5 +1,5 @@
 ---
-title: "Newsletter | Big Brother Relies On Big Data "
+title: "Newsletter | Big Brother Relies On Big Data"
 date: 2026-09-07
 excerpt: As the State deploys a gamut of surveillance technologies to monitor
   and discourage protests, the risks and problems of a single permanent,
