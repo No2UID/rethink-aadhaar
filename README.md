@@ -1,13 +1,15 @@
 # Rethink Aadhaar
 
-[![Built with Astro](https://img.shields.io/badge/Astro-6-FF5D01?logo=astro&logoColor=white)](https://astro.build)
+[![Built with Astro](https://img.shields.io/badge/Astro-7-FF5D01?logo=astro&logoColor=white)](https://astro.build)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind v4](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue)](#license)
 [![License: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey)](https://creativecommons.org/licenses/by/4.0/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/no2uid/rethink-aadhaar/pulls)
+[![Contribute via issues](https://img.shields.io/badge/contribute-via%20issues-brightgreen)](https://github.com/No2UID/rethink-aadhaar/issues/new)
 
-The official website of [rethinkaadhaar.in](https://rethinkaadhaar.in) — a static, accessibility-first site built with Astro 6, Tailwind v4, and MDX content collections.
+The official website of [rethinkaadhaar.in](https://rethinkaadhaar.in) — a static, accessibility-first site built with Astro 7, Tailwind v4, and MDX content collections.
+
+External pull requests are closed automatically; please [open an issue](https://github.com/No2UID/rethink-aadhaar/issues/new) describing the change instead.
 
 ## Quick start
 
@@ -32,7 +34,7 @@ bun run new -- exclusion "Aadhaar-linked pension denial in Khunti" --location "K
 bun run new -- press     "Headline" --publication "The Wire" --href https://example.com
 ```
 
-New entries ship as `draft: true`. Flip the flag to publish. See [`TECHNICAL.md`](./TECHNICAL.md) for auto-sync and manual workflows.
+New entries ship as `draft: true`. Flip the flag to publish. See [`TECHNICAL.md`](./TECHNICAL.md) for the manual workflow, or [`COLLABORATOR.md`](./COLLABORATOR.md) for the browser editor at `/admin/`.
 
 ## Project layout
 

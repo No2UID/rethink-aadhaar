@@ -1,7 +1,6 @@
 // Single source of truth for "which content categories get regular updates".
-// Both the editor scaffolder (scripts/new.ts) and the upstream sync
-// (scripts/sync.ts) read this — adding a new updatable collection means
-// editing this one file.
+// The editor scaffolder (scripts/new.ts) reads this — adding a new
+// updatable collection means editing this one file.
 
 export type CategoryKey = 'update' | 'exclusion' | 'press';
 

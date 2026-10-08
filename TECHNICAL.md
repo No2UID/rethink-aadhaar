@@ -23,12 +23,14 @@ public/
   robots.txt  .nojekyll
 scripts/
   new.ts               Scaffold a new content entry (bun run new -- update "Title")
-  sync.ts              Crawl rethinkaadhaar.in/sitemap.xml, write new entries as drafts
   migrate-posts.ts     Original one-time HTML→MD migration (kept for re-runs)
   seed-press.ts        Seeded the press collection from a curated list
 .github/workflows/
-  deploy.yml           Build & publish to GH Pages on every push to main
-  sync.yml             Weekly cron (Mon 06:00 UTC) — opens a PR with new upstream content
+  deploy.yml           Build & publish to GH Pages on every push to main (and on dispatch)
+  pr-check.yml         Lint + astro check + build + SEO gate on every PR
+  cms-automerge.yml    CMS publish gate: merges a cms/* PR only once its Decap status is Ready
+  delete-entry.yml     Manual: open a cms/delete/* PR that removes one content/media file
+  block-external-prs.yml  Closes PRs from forks and points people at issues
 ```
 
 ## Information architecture
@@ -56,21 +58,17 @@ scripts/
 
 ## Adding content — advanced
 
-### Auto-sync from the live site — `bun run sync`
+Most content lands through the browser editor at `/admin/` (see `COLLABORATOR.md` and `public/admin/README.md`). The two developer paths:
 
-Pulls `rethinkaadhaar.in/sitemap.xml`, finds URLs not yet represented locally, fetches each page, extracts metadata (og:title / og:description / og:image / datePublished), and writes draft Markdown.
+### Scaffold — `bun run new`
 
 ```sh
-bun run sync                 # dry-run: list new URLs
-bun run sync -- --write      # write the files
-bun run sync -- --since 2026-01-01 --write   # only entries on/after this date
+bun run new -- update    "Title"
+bun run new -- exclusion "Title" --location "Khunti, Jharkhand"
+bun run new -- press     "Headline" --publication "The Wire" --href https://…
 ```
 
-Press coverage is **not** auto-synced — it's curated third-party publications. Use `bun run new -- press …`.
-
-### CI sync (every Monday)
-
-The `sync.yml` workflow runs `bun run sync -- --write` weekly and opens a PR titled "Upstream sync — new updates / exclusion stories". Reviewing and merging the PR publishes the new content.
+Writes a draft Markdown file with the right slug into the right collection.
 
 ### By hand
 
