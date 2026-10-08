@@ -69,7 +69,9 @@ orphaned image, an accidental duplicate):
 1. Go to the repository's **Actions** tab →
    **Delete entry (PR)** → **Run workflow**.
 2. Paste the file path (e.g. `src/content/update/2026-05-12-foo.md`).
-3. **Run workflow**. It removes the file and goes live the same way.
+3. **Run workflow**. It removes the file and goes live the same way a
+   published entry does. If the run log says a check is waiting for
+   approval, ask an admin; that step is theirs, not yours.
 
 In almost every case you want **Unpublish (3)**, not delete.
 

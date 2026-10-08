@@ -126,6 +126,18 @@ is in the critical path.
   `gh api repos/No2UID/rethink-aadhaar/branches/main/protection`. If it
   returns 404, see CONTRIBUTING.md for the recommended `gh api -X PUT`
   command.
+- **`CMS_BOT_TOKEN` (optional, recommended).** A fine-grained personal
+  access token of the `No2UID` account, stored as a repository secret of
+  that name. The publish gate and the delete workflow use it instead of
+  `GITHUB_TOKEN` when it is present. Without it, two things need a human
+  click in the Actions tab: an entry whose branch fell behind `main`
+  while it was a draft, and a delete PR. With it, nothing waits. Setup:
+  GitHub → Settings → Developer settings → Fine-grained tokens →
+  Generate, resource owner `No2UID`, repository access **only**
+  `No2UID/rethink-aadhaar`, permissions **Contents: read and write** and
+  **Pull requests: read and write**, then repo Settings → Secrets and
+  variables → Actions → New repository secret `CMS_BOT_TOKEN`. It never
+  reaches the browser; rotate it when it expires.
 - **Minimum OAuth scope.** The worker requests `public_repo` — read/write
   to public repos only, no access to private repos or org admin. Editors
   revoke at <https://github.com/settings/applications> (Authorized OAuth
@@ -163,22 +175,29 @@ is in the critical path.
    or `decap-cms/pending_review` it keeps auto-merge **off**: nothing
    publishes, however often the editor saves.
 8. Editor sets status **Ready**. Decap relabels the PR
-   `decap-cms/pending_publish`. The gate brings the branch up to date
-   with `main` if it fell behind, then merges: directly if `check` is
+   `decap-cms/pending_publish`. The gate merges: directly if `check` is
    already green, otherwise by arming squash auto-merge. Branch
    protection still requires the check to pass. Decap's **Publish now**
    button is optional; it merges with the editor's token (squash, per
    `squash_merges: true`) and simply errors if the gate got there first
    or the check is still running.
-9. The gate then dispatches `.github/workflows/deploy.yml` (a merge
-   made with `GITHUB_TOKEN` does not trigger `on: push`), which
-   rebuilds the static site and deploys to GitHub Pages.
+9. The gate then makes sure `.github/workflows/deploy.yml` runs. With
+   `CMS_BOT_TOKEN` the merge is an ordinary push and deploy fires by
+   itself; with `GITHUB_TOKEN` (whose pushes never trigger `on: push`)
+   the gate dispatches it. Either way the site rebuilds and deploys.
 10. New post is live in ~2 minutes.
 
-`cms/delete/*` PRs opened by `delete-entry.yml` never reach this gate:
-they are created with `GITHUB_TOKEN`, for which GitHub starts no
-`pull_request` workflows at all. `delete-entry.yml` therefore runs
-`pr-check` on its branch, merges, and dispatches the deploy itself.
+**Branch fell behind `main`.** If something else merged while the entry
+was a draft, branch protection requires the branch to be updated before
+it can merge, and the gate does that. With `CMS_BOT_TOKEN` the update is
+an ordinary push and nothing else happens. Without it the update is
+attributed to the Actions bot and GitHub holds the resulting `pr-check`
+run for approval: the gate comments on the PR, and a maintainer must
+open the Actions tab and click **Approve and run** on the waiting run.
+The PR then merges and deploys on its own.
+
+`cms/delete/*` PRs opened by `delete-entry.yml` arrive already labelled
+`decap-cms/pending_publish` and go through this same gate.
 
 To **edit an existing entry**: open it in `/admin/`, change fields, save.
 Same PR flow. Slug never changes (URLs stay stable).
@@ -193,8 +212,10 @@ To **permanently delete** a file (rare; for actual mistakes — orphaned
 images, accidental duplicates): run the
 [**Delete entry (PR)**](../../actions/workflows/delete-entry.yml)
 workflow from the Actions tab, paste the repo-relative path, click
-**Run workflow**. It opens a `cms/delete/<slug>` PR, runs the check on
-it, merges it and deploys, all within the one workflow run.
+**Run workflow**. It opens a `cms/delete/<slug>` PR labelled Ready; the
+publish gate merges it once the check is green and redeploys. Without
+`CMS_BOT_TOKEN`, first approve that branch's waiting workflow runs in the
+Actions tab (the run log says so).
 
 > **About the delete controls in the CMS.** `delete: false` on every
 > collection hides delete for a published entry. Decap 3.12.2 still
