@@ -4,14 +4,17 @@ name: Delete entry (PR)
 # routes as a direct commit to main and branch protection blocks).
 #
 # Run from the Actions tab. The workflow validates the path, creates a
-# `cms/delete/<sanitised>` branch with the file removed, opens a PR, runs
-# pr-check on it, squash-merges it once the check passes, and dispatches
-# deploy.yml.
+# `cms/delete/<sanitised>` branch with the file removed, and opens a PR
+# already labelled `decap-cms/pending_publish`. From there the CMS publish
+# gate (cms-automerge.yml) treats it like any Ready entry: it merges once
+# pr-check is green and makes sure the site deploys.
 #
-# It has to do all of that itself: the branch push and the PR are made
-# with GITHUB_TOKEN, and GitHub never starts `pull_request` or `push`
-# workflows for GITHUB_TOKEN activity. Only `workflow_dispatch` is exempt,
-# which is how pr-check and deploy are started here.
+# Token. With the CMS_BOT_TOKEN secret set, the push and the PR are made as
+# the No2UID account and every workflow starts normally. Without it they
+# are made with GITHUB_TOKEN, attributed to github-actions[bot], and GitHub
+# holds the PR's workflow runs for approval: whoever triggered this must
+# open the Actions tab and click "Approve and run" on the waiting pr-check
+# and CMS publish gate runs for the new branch.
 #
 # Allowed paths: anything inside `src/content/` or `public/media/`. Any
 # other path is rejected — you can't use this workflow to nuke
@@ -32,16 +35,19 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: write
 
 jobs:
   open-delete-pr:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.CMS_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+      USING_BOT_PAT: ${{ secrets.CMS_BOT_TOKEN != '' }}
     steps:
       # Pinned to commit SHA — tag in comment is the human-readable version.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           fetch-depth: 0
+          token: ${{ secrets.CMS_BOT_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Validate path
         env:
@@ -77,41 +83,16 @@ jobs:
           git commit -m "$msg"
           git push -u origin "$branch"
 
-      - name: Open PR
+      - name: Open PR, labelled Ready
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           P: ${{ inputs.path }}
           REASON: ${{ inputs.reason }}
           ACTOR: ${{ github.actor }}
         run: |
           set -euo pipefail
-          body=$(printf 'Permanently removes `%s` from the repo.\n\n**Triggered by:** @%s via the [delete-entry workflow](../actions/workflows/delete-entry.yml).\n**Reason:** %s\n\nMerges automatically once `pr-check` is green, then deploys.' "$P" "$ACTOR" "${REASON:-_(none provided)_}")
-          gh pr create --base main --head "$BRANCH" --title "Delete: $P" --body "$body"
-
-      - name: Check, merge, deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-          pr=$(gh pr view "$BRANCH" --repo "$REPO" --json number --jq .number)
-          # Required `check` status: run pr-check on the branch explicitly.
-          gh workflow run pr-check.yml --repo "$REPO" --ref "$BRANCH"
-          gh pr merge --auto --squash "$pr" --repo "$REPO"
-          for _ in $(seq 1 180); do
-            state=$(gh pr view "$pr" --repo "$REPO" --json state --jq .state)
-            case "$state" in
-              MERGED)
-                echo "PR #$pr merged. Dispatching deploy.yml on main."
-                gh workflow run deploy.yml --repo "$REPO" --ref main
-                exit 0
-                ;;
-              CLOSED)
-                echo "PR #$pr closed without merge; no deploy."
-                exit 0
-                ;;
-            esac
-            sleep 10
-          done
-          echo "::error::PR #$pr did not merge within 30 minutes; pr-check probably failed. See the PR."
-          exit 1
+          body=$(printf 'Permanently removes `%s` from the repo.\n\n**Triggered by:** @%s via the [delete-entry workflow](../actions/workflows/delete-entry.yml).\n**Reason:** %s\n\nLabelled `decap-cms/pending_publish`, so the CMS publish gate merges it once `pr-check` is green and the site redeploys.' "$P" "$ACTOR" "${REASON:-_(none provided)_}")
+          gh pr create --base main --head "$BRANCH" --title "Delete: $P" --body "$body" \
+            --label decap-cms/pending_publish
+          if [ "$USING_BOT_PAT" != "true" ]; then
+            echo "::warning::Opened with GITHUB_TOKEN. GitHub holds this PR's workflow runs for approval: open the Actions tab, find the waiting pr-check and CMS publish gate runs for $BRANCH, and click 'Approve and run'. Set the CMS_BOT_TOKEN secret to make this automatic."
+          fi

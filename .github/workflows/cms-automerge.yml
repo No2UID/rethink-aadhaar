@@ -12,13 +12,22 @@ name: CMS publish gate
 #
 # When Ready, the job brings a stale branch up to date, merges (directly if
 # the PR is already clean, otherwise via squash auto-merge), waits for the
-# merge, then dispatches deploy.yml: merges and pushes made with
-# GITHUB_TOKEN never trigger `on: push`, so without the dispatch a publish
-# would silently never deploy.
+# merge, and makes sure deploy.yml runs.
 #
-# `cms/delete/*` PRs from delete-entry.yml are opened with GITHUB_TOKEN, so
-# no pull_request workflow (this one included) ever runs on them. That
-# workflow runs the check and merges itself.
+# Token. The job prefers the CMS_BOT_TOKEN secret (a fine-grained PAT of the
+# No2UID account with contents: write and pull requests: write on this
+# repo) and falls back to GITHUB_TOKEN. The difference matters twice:
+#
+#   - Merges and pushes made with GITHUB_TOKEN never trigger `on: push`, so
+#     deploy.yml has to be dispatched by hand after the merge.
+#   - A branch that fell behind `main` must be updated before it can merge
+#     (branch protection requires it). An update pushed with GITHUB_TOKEN
+#     is attributed to github-actions[bot], and GitHub holds the resulting
+#     pr-check run for manual approval (Actions tab, "Approve and run").
+#     Until someone clicks, the PR waits. With CMS_BOT_TOKEN the push is a
+#     normal user push and nothing waits.
+#
+# `cms/delete/*` PRs from delete-entry.yml arrive already labelled Ready.
 
 on:
   pull_request:
@@ -43,7 +52,8 @@ jobs:
       && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.CMS_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+      USING_BOT_PAT: ${{ secrets.CMS_BOT_TOKEN != '' }}
       REPO: ${{ github.repository }}
       PR: ${{ github.event.pull_request.number }}
       BRANCH: ${{ github.head_ref }}
@@ -68,11 +78,11 @@ jobs:
           case "$state" in
             BEHIND)
               gh pr update-branch "$PR" --repo "$REPO"
-              # The update is a GITHUB_TOKEN push, which does not trigger
-              # pr-check. Run it explicitly so the required `check` status
-              # exists on the new head commit.
-              sleep 5
-              gh workflow run pr-check.yml --repo "$REPO" --ref "$BRANCH"
+              if [ "$USING_BOT_PAT" != "true" ]; then
+                msg="This entry fell behind \`main\` and was updated by the Actions bot. GitHub holds the resulting check for approval: a maintainer must open the **Actions** tab, pick the waiting **pr-check** run for this branch, and click **Approve and run**. It merges and deploys on its own after that. Adding a \`CMS_BOT_TOKEN\` secret removes this step (see public/admin/README.md)."
+                gh pr comment "$PR" --repo "$REPO" --body "$msg"
+                echo "::warning::$msg"
+              fi
               ;;
             DIRTY)
               echo "::error::PR #$PR conflicts with main and cannot be published. An admin must resolve the conflict on branch $BRANCH."
@@ -109,8 +119,12 @@ jobs:
             state=$(gh pr view "$PR" --repo "$REPO" --json state --jq .state)
             case "$state" in
               MERGED)
-                echo "PR #$PR merged. Dispatching deploy.yml on main."
-                gh workflow run deploy.yml --repo "$REPO" --ref main
+                if [ "$USING_BOT_PAT" = "true" ]; then
+                  echo "PR #$PR merged with CMS_BOT_TOKEN; deploy.yml runs on the push to main."
+                else
+                  echo "PR #$PR merged with GITHUB_TOKEN. Dispatching deploy.yml on main."
+                  gh workflow run deploy.yml --repo "$REPO" --ref main
+                fi
                 exit 0
                 ;;
               CLOSED)
@@ -120,4 +134,4 @@ jobs:
             esac
             sleep 10
           done
-          echo "::warning::PR #$PR did not merge within 30 minutes. The check is failing or still queued; auto-merge stays enabled. If it merges later, run deploy.yml by hand or re-save in the CMS."
+          echo "::warning::PR #$PR did not merge within 30 minutes. The check is failing, still queued, or waiting for approval; auto-merge stays enabled. If it merges later without a deploy, run deploy.yml by hand or re-save in the CMS."
