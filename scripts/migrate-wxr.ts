@@ -1,8 +1,7 @@
 #!/usr/bin/env bun
 // One-shot migration from a Squarespace → WordPress (WXR) XML export.
-// Use this when content exists in a WXR dump but not on the live site (or
-// not yet crawled by sync.ts) — e.g. archived posts that pre-date the
-// Astro rebuild.
+// Use this when content exists in a WXR dump but not in this repo — e.g.
+// archived posts that pre-date the Astro rebuild.
 //
 // What it does:
 //   1. Parses the WXR XML and lists every <item> of type "post".

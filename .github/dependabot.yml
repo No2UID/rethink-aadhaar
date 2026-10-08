@@ -5,6 +5,11 @@
 # build/typecheck/SEO check filter out anything that doesn't actually
 # work. Minor + patch bumps are grouped per ecosystem to reduce PR
 # noise; majors come through as individual PRs so each can be reviewed.
+#
+# Monthly, not weekly: the repo merges dependency bumps roughly monthly,
+# and a weekly cadence meant each Monday's grouped PR superseded the
+# previous one unmerged (11 of the first 22 Dependabot PRs closed that
+# way). Security updates are not affected by this schedule.
 
 version: 2
 updates:
@@ -12,8 +17,7 @@ updates:
   - package-ecosystem: "bun"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "monthly"
       time: "06:00"
       timezone: "Asia/Kolkata"
     open-pull-requests-limit: 5
@@ -32,8 +36,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "monthly"
       time: "06:00"
       timezone: "Asia/Kolkata"
     open-pull-requests-limit: 5

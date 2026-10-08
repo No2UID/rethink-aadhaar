@@ -5,8 +5,8 @@
 //   bun run new -- exclusion "Aadhaar-linked pension denial in Khunti"
 //   bun run new -- press     "Outlet — headline" --publication "The Wire" --href https://...
 //
-// Always writes the entry as a draft (so it shows up in `bun run sync` reports
-// and is excluded from RSS/index until you flip `draft: false`).
+// Always writes the entry as a draft (excluded from RSS/index until you
+// flip `draft: false`).
 
 import { resolve, join } from 'node:path';
 import { CATEGORIES, type CategoryKey, kebab, todayISO } from '~/lib/categories';

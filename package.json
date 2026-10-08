@@ -13,7 +13,6 @@
     "preview": "astro preview",
     "astro": "astro",
     "new": "bun scripts/new.ts",
-    "sync": "bun scripts/sync.ts",
     "check": "biome check",
     "format": "biome format --write",
     "lint": "biome lint",

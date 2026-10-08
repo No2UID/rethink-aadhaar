@@ -1,7 +1,7 @@
 # Rethink Aadhaar — Claude Instructions
 
 ## Project
-Static site for rethinkaadhaar.in — Astro 6, Tailwind v4, MDX Content Collections, Biome, Bun.
+Static site for rethinkaadhaar.in — Astro 7, Tailwind v4, MDX Content Collections, Biome, Bun.
 
 ## Commands
 - `bun run dev` — dev server

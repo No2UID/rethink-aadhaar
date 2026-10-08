@@ -11,12 +11,18 @@ Sign in once with **Sign in with GitHub**. You stay signed in.
 ## The one thing to know
 
 In the editor, **Save is not Publish.** Saving stores your work; the
-entry is still hidden from the public site. To make it live you must
-also set the status to **Ready** and click **Publish now**.
+entry is still hidden from the public site, and you can keep saving for
+as long as you like. To make it live you must set the status to
+**Ready** and click **Publish now**.
 
-There is no separate human review step — once you publish, an automated
-check runs and the page goes live on its own in about **2 minutes**.
-Nobody has to approve it. So publish only when it is genuinely ready.
+There is no separate human review step — once you set **Ready**, an
+automated check runs and the page goes live on its own in about
+**2 minutes**. Nobody has to approve it. So move to Ready only when it
+is genuinely ready.
+
+Changed your mind about a draft? Open it and click **Delete unpublished
+entry** (or **Delete unpublished changes** on an existing entry). That
+discards the draft only; nothing on the public site changes.
 
 ---
 
@@ -53,8 +59,9 @@ This is the normal way to retire content.
 
 ## 4. Permanently delete a file (rare)
 
-The editor's delete button is intentionally disabled. To remove a file
-for good (an orphaned image, an accidental duplicate):
+The editor can only discard *unpublished* work (see above); it cannot
+delete something that is already live. To remove a file for good (an
+orphaned image, an accidental duplicate):
 
 1. Go to the repository's **Actions** tab →
    **Delete entry (PR)** → **Run workflow**.
@@ -100,6 +107,8 @@ is removed for safety and won't do anything.
 - **Published but not live after ~5 min?** The automated check may have
   failed (usually a required field left blank). Re-open the entry, check
   every required field is filled, Save and Publish again.
+- **Saved but it is not on the site?** That is by design. Saving never
+  publishes; set the status to **Ready** and click **Publish now**.
 - **An image must never be public?** Don't upload it. Everything in the
   editor lands in a public repository the moment it publishes.
 - **Stuck on sign-in?** Your GitHub username must be on the

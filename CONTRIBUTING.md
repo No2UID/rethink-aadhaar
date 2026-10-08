@@ -3,9 +3,9 @@
 Two paths in:
 
 - **Editor (no Git, no terminal):** use the in-browser CMS at
-  <https://no2uid.github.io/rethink-aadhaar/admin/>. Sign in with GitHub,
-  fill the form, hit Publish — Decap opens a pull request on your behalf.
-  Skip to [Editorial workflow](#editorial-workflow-via-admin).
+  <https://rethinkaadhaar.in/admin/>. Sign in with GitHub, fill the form,
+  Save, set the status to Ready and Publish — Decap opens a pull request on
+  your behalf. Skip to [Editorial workflow](#editorial-workflow-via-admin).
 - **Developer / power editor:** clone the repo, edit Markdown directly,
   open a PR. Skip to [Local development](#local-development).
 
@@ -16,7 +16,7 @@ the result to GitHub Pages on merge.
 
 ## Editorial workflow (via /admin/)
 
-1. Open <https://no2uid.github.io/rethink-aadhaar/admin/> and sign in with
+1. Open <https://rethinkaadhaar.in/admin/> and sign in with
    GitHub. (You need write access to `No2UID/rethink-aadhaar`. Ask an
    admin to add you as a collaborator if you don't.)
 2. Pick a collection — Updates, Exclusion stories, Press, Myths, FAQs,
@@ -25,16 +25,26 @@ the result to GitHub Pages on merge.
 4. Fill the form. The CMS validates required fields and URL patterns
    inline; `astro check` re-validates against the Zod schemas at PR-build
    time, so a malformed entry fails CI.
-5. **Save → set status Ready → Publish now.** Decap commits to a branch
-   like `cms/update/2026-05-12-…` and opens a PR titled
-   `Create Updates "..."`.
-6. `cms-automerge.yml` enables auto-merge; the PR squash-merges as soon
-   as the `check` CI status passes (no human click needed).
-7. `deploy.yml` fires, rebuilds, and the entry is live in ~2 minutes.
+5. **Save.** Decap commits to a branch like `cms/update/2026-05-12-…` and
+   opens a PR titled `Create Updates "..."`, labelled `decap-cms/draft`.
+   Nothing is published yet: `cms-automerge.yml` keeps auto-merge off for
+   any CMS PR whose status is Draft or In review, so you can save as often
+   as you like.
+6. **Set status Ready → Publish now.** Decap relabels the PR
+   `decap-cms/pending_publish`. `cms-automerge.yml` then brings the branch
+   up to date with `main` if needed, enables squash auto-merge, and the PR
+   merges as soon as the `check` CI status passes (no human click needed).
+7. The same workflow dispatches `deploy.yml` once the merge lands (a merge
+   made with `GITHUB_TOKEN` does not trigger `on: push`), and the entry is
+   live in ~2 minutes.
 
-**Drafts.** New `update/` entries default to `draft: true`. Drafts are
-hidden from the home page, blog index, RSS, sitemap, and `llms.txt`. Flip
-to `draft: false` (in the CMS or in the Markdown frontmatter) to publish.
+**Drafts.** There are two independent mechanisms. The Decap *status*
+(Draft / In review / Ready) decides whether the PR may merge at all. The
+`draft` *field* in the entry decides whether a merged entry is visible: a
+`draft: true` entry is hidden from the home page, blog index, RSS,
+sitemap, and `llms.txt`, which is how content is unpublished without
+deleting it. In the CMS the Draft toggle defaults to OFF; the CLI
+scaffold (`bun run new`) sets `draft: true`.
 
 **Image uploads.** Land in `public/media/` and become publicly visible the
 moment the PR merges. Don't upload anything you wouldn't paste into a
@@ -81,8 +91,8 @@ bun run new -- press     "Outlet headline" \
 
 The script writes a draft Markdown file with the right slug
 (`YYYY-MM-DD-kebab-title.md`) into the right collection. Edit the body,
-then either commit on a branch and open a PR, or run `bun run sync` to see
-it in the upstream-sync report.
+flip `draft: true → false` when it is ready, commit on a branch and open a
+PR.
 
 ---
 
@@ -146,24 +156,10 @@ Raw `<a href="/myths">` will 404 in production.
 
 Every merge to `main` triggers `.github/workflows/deploy.yml`:
 build → upload `dist/` → `actions/deploy-pages`. Live in ~2 minutes at
-<https://no2uid.github.io/rethink-aadhaar/>.
+<https://rethinkaadhaar.in/>.
 
 To verify a deploy from the CLI:
 
 ```sh
 just verify-deploy   # fetches /, /myths, /about, counts aria-current="page"
 ```
-
----
-
-## Upstream content sync
-
-`.github/workflows/sync.yml` runs every Monday at 06:00 UTC. It crawls
-`rethinkaadhaar.in/sitemap.xml`, writes new `update/` and `exclusion/`
-entries as drafts, and opens a PR titled
-`Upstream sync — new updates / exclusion stories`. Reviewers edit the
-body, flip `draft: true → false` on `update/` entries to publish, then
-merge.
-
-Trigger manually: **Actions → Weekly upstream content sync → Run workflow**
-(or `gh workflow run sync.yml`).

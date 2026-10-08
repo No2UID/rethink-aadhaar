@@ -54,9 +54,9 @@ worker's environment — never in the repo.
        └──────────────────────────────────►│
                                            │
                        4. PR opened ───────┤
-                                           │
-                       5. Review + merge ──┤
-                                           │
+                          (status label)   │
+                       5. Ready → gate ────┤
+                          auto-merges      │
                        6. deploy.yml fires ▼
                                        GitHub Pages
 ```
@@ -152,19 +152,28 @@ is in the critical path.
 1. Editor visits `/admin/` and signs in with GitHub.
 2. Editor picks a collection (e.g. **Updates**), clicks **+ New**.
 3. Decap generates a slug like `2026-05-12-statement-on-pension-denial`.
-4. Editor fills the form, attaches a hero image, hits **Save** then
-   sets status **Ready** and clicks **Publish now**.
+4. Editor fills the form, attaches a hero image, hits **Save**.
 5. Decap commits to a branch like `cms/update/2026-05-12-statement…`,
-   pushes it, opens a PR titled `Create Updates "Statement on…"`.
+   pushes it, opens a PR titled `Create Updates "Statement on…"` and
+   labels it `decap-cms/draft`. Every later Save pushes to the same PR.
 6. CI runs `bun run build` (= `astro check && astro build`). If the Zod
    schema rejects anything, the PR is red.
-7. `.github/workflows/cms-automerge.yml` enables auto-merge on the PR;
-   GitHub squash-merges as soon as the `check` status goes green. No
-   human click needed — branch protection still requires the check to
-   pass.
-8. `.github/workflows/deploy.yml` fires on the push to `main`,
-   rebuilds the static site, and deploys to GitHub Pages.
-9. New post is live in ~2 minutes.
+7. `.github/workflows/cms-automerge.yml` runs on every PR event and
+   reads the Decap status label. While the label is `decap-cms/draft`
+   or `decap-cms/pending_review` it keeps auto-merge **off**: nothing
+   publishes, however often the editor saves.
+8. Editor sets status **Ready** and clicks **Publish now**. Decap
+   relabels the PR `decap-cms/pending_publish`. The gate brings the
+   branch up to date with `main` if it fell behind, enables squash
+   auto-merge, and GitHub merges as soon as `check` is green. Branch
+   protection still requires the check to pass.
+9. The gate then dispatches `.github/workflows/deploy.yml` (a merge
+   made with `GITHUB_TOKEN` does not trigger `on: push`), which
+   rebuilds the static site and deploys to GitHub Pages.
+10. New post is live in ~2 minutes.
+
+`cms/delete/*` PRs opened by `delete-entry.yml` carry no Decap label and
+are treated as Ready.
 
 To **edit an existing entry**: open it in `/admin/`, change fields, save.
 Same PR flow. Slug never changes (URLs stay stable).
@@ -181,19 +190,16 @@ images, accidental duplicates): run the
 workflow from the Actions tab, paste the repo-relative path, click
 **Run workflow**. It opens a `cms/delete/<slug>` PR which auto-merges.
 
-> **Why there is no delete button in the CMS.** `delete: false` on
-> every collection only hides delete for a published, *unchanged*
-> entry; Decap 3.12.2 still shows a "Delete unpublished changes/entry"
-> button for any entry with in-flight changes, with no config flag to
-> disable it. In this repo that button is always dead — `cms-automerge`
-> squash-merges the draft PR and deletes its branch within ~2 min, so
-> by the time it is clicked Decap has no open PR to act on and the
-> click silently errors. A small `MutationObserver` in
-> `public/admin/index.html` removes the control so editors are not
-> misled. The same fix expressed properly against Decap source —
-> upstream-ready, and for any future self-hosted build — is kept in
-> [`patches/`](../../patches/). If you ever upgrade Decap, re-check
-> both the shim's label regex and that patch (see `patches/README.md`).
+> **About the delete controls in the CMS.** `delete: false` on every
+> collection hides delete for a published entry. Decap 3.12.2 still
+> shows **Delete unpublished changes / Delete unpublished entry** for an
+> entry with in-flight changes. That control is correct and useful: it
+> closes the open `cms/*` PR and deletes its branch, discarding the
+> draft and touching nothing on the live site. (Before the publish gate
+> existed, every save auto-merged within a minute, so there was never an
+> open PR for it to act on and `index.html` hid it with a
+> `MutationObserver`. That shim is gone. The Decap source patch in
+> [`patches/`](../../patches/) is kept for reference only.)
 
 ---
 
