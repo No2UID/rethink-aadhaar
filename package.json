@@ -35,7 +35,7 @@
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
+    "@biomejs/biome": "2.6.4",
     "@tailwindcss/typography": "^0.5.20"
   },
   "overrides": {
